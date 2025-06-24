@@ -1,0 +1,206 @@
+@import "tailwindcss";
+
+:root{
+    --main-bg-color: #0B132B;
+    --main-shadow-color: #1C2541;
+    --main-container-color: #3A506B;
+    --main-transition-color: #5BC0BE;
+    --main-fg-color: #6FFFE9;
+
+    --main-glass-bg-color: rgba(11,19,43, 0.2);
+    --main-glass-shadow-color: rgba(28,37,65, 0.2);
+    --main-glass-container-color: rgba(58,80,107, 0.2);
+    --main-glass-transition-color: rgba(91,192,190, 0.2);
+    --main-glass-fg-color: rgba(111,255,233, 0.2);
+}
+
+@theme inline {
+    --color-main-bg: var(--main-bg-color);
+    --color-main-shadow: var(--main-shadow-color);
+    --color-main-container: var(--main-container-color);
+    --color-main-transition: var(--main-transition-color);
+    --color-main-fg: var(--main-fg-color);
+
+    --color-glass-bg: var(--main-glass-bg-color);
+    --color-glass-shadow: var(--main-glass-shadow-color);
+    --color-glass-container: var(--main-glass-container-color);
+    --color-glass-transition: var(--main-glass-transition-color);
+    --color-glass-fg: var(--main-glass-fg-color);
+
+    --font-main: "Baskervville", serif;
+
+    --animate-fade-in: fade-in 2s ease forwards;
+    --animate-slide-down: slide-down 2s ease 1;
+    --animate-tiptoe: tiptoe 0.5s ease forwards;
+    --animate-untiptoe: untiptoe 0.5s ease forwards;
+
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0%;
+    }
+    100% {
+        opacity: 100%;
+    }
+}
+
+@keyframes slide-down {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes tiptoe {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-5%);
+    }
+}
+
+@keyframes untiptoe {
+    0% {
+        transform: translateY(-5%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+
+body {
+    background-color: var(--main-bg-color);
+    color: var(--main-shadow-color);
+    font-family: "Baskervville", serif;
+}
+
+.nav-button {
+    transform: translateY(-110%);
+    @apply bg-main-fg hover:bg-main-transition p-5 font-main basis-full;
+    animation: slide-down 1s ease forwards, fade-in 2s ease forwards;
+}
+
+.nav-button:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.nav-button:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+#contact-button {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}
+
+/* @media(prefers-reduced-motion) {
+
+} */
+
+/* #contact-info {
+    position: relative;
+    top: -50px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    display: none; hidden by default
+    z-index: 999;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;} 
+*/
+
+#tech-list {
+    padding-top: .5em;
+    padding-bottom: .5em;
+    padding-left: .1em;
+    padding-right: .1em;
+
+    display: flex;
+
+    li {
+        padding-left: .5em;
+        padding-right: .5em;
+        margin-left: .5em;
+        margin-right: .5em;
+        border-radius: 10px;
+        backdrop-filter: blur(5px);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        background: rgba(111,255,233, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: white;
+        font-size: small;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+#project-tile {
+    @apply p-2.5 col-span-12 md:col-span-6 lg:col-span-4;
+}
+
+#project-card {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(8px);
+    @apply p-4 bg-glass-container max-w-xl text-white rounded-md hover:animate-tiptoe not-hover:animate-untiptoe;
+    
+}
+
+@property --angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+#pfp-wrapper::after, #pfp-wrapper::before {
+    content: '';
+    background-image: conic-gradient(
+        from var(--angle), 
+        purple,
+        hotpink,
+        chartreuse,
+        teal, 
+        blue, 
+        purple);
+    height: 102%;
+    width: 102%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    translate: -50% -50%;
+    z-index: 0;
+    animation: 4s spin linear infinite; 
+}
+
+@keyframes spin {
+    from {
+        --angle: 0deg;
+    } to {
+        --angle: 360deg;
+    }
+}
+
+#pfp-wrapper::before {
+    filter: blur(1.5rem);
+    opacity: 0.9;
+}
+
+#croc {
+    border: 1px solid red;
+    position: absolute;
+    background-color: red;
+    top: 100px;
+    right: 100px;
+    height: 50px;
+    width: 50px;
+}
