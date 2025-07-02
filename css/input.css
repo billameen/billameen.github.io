@@ -31,8 +31,8 @@
 
     --animate-fade-in: fade-in 2s ease forwards;
     --animate-slide-down: slide-down 2s ease 1;
-    --animate-tiptoe: tiptoe 0.5s ease forwards;
-    --animate-untiptoe: untiptoe 0.5s ease forwards;
+    --animate-tiptoe: tiptoe 1s ease forwards;
+    --animate-untiptoe: untiptoe 1s ease forwards;
 
 }
 
@@ -59,13 +59,13 @@
         transform: translateY(0);
     }
     100% {
-        transform: translateY(-5%);
+        transform: translateY(-3%);
     }
 }
 
 @keyframes untiptoe {
     0% {
-        transform: translateY(-5%);
+        transform: translateY(-3%);
     }
     100% {
         transform: translateY(0);
@@ -127,17 +127,17 @@ body {
     display: flex;
 
     li {
-        padding-left: .5em;
-        padding-right: .5em;
+        padding-left: .8em;
+        padding-right: .8em;
         margin-left: .5em;
         margin-right: .5em;
-        border-radius: 10px;
+        border-radius: 2em;
         backdrop-filter: blur(5px);
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         background: rgba(111,255,233, 0.2);
         border: 1px solid rgba(255, 255, 255, 0.3);
         color: white;
-        font-size: small;
+        font-size: 0.8rem;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -145,7 +145,7 @@ body {
 }
 
 #project-tile {
-    @apply p-2.5 col-span-12 md:col-span-6 lg:col-span-4;
+    @apply p-2.5 col-span-12 md:col-span-6;
 }
 
 #project-card {
@@ -153,6 +153,23 @@ body {
     backdrop-filter: blur(8px);
     @apply p-4 bg-glass-container max-w-xl text-white rounded-md hover:animate-tiptoe not-hover:animate-untiptoe;
     
+}
+
+#project-images {
+    @apply flex flex-row bg-main-bg justify-evenly py-5 rounded-2xl;
+
+    img {
+
+        border-radius: 1rem;
+
+        height: clamp(5rem, 35vw, 15rem);
+        width: clamp(5rem, 35vw, 15rem);
+
+        @media (min-width: 768px) {
+            height: clamp(4rem, 13vw + 3rem, 16rem);
+            width: clamp(4rem, 13vw + 3rem, 16rem);
+        }
+    }
 }
 
 @property --angle {
