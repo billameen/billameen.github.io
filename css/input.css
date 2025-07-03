@@ -151,26 +151,10 @@ body {
 #project-card {
     border: 1px solid rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(8px);
-    @apply p-4 bg-glass-container max-w-xl text-white rounded-md hover:animate-tiptoe not-hover:animate-untiptoe;
+    @apply p-4 bg-glass-container max-w-xl text-white rounded-md;
     
 }
 
-#project-images {
-    @apply flex flex-row bg-main-bg justify-evenly py-5 rounded-2xl;
-
-    img {
-
-        border-radius: 1rem;
-
-        height: clamp(5rem, 35vw, 15rem);
-        width: clamp(5rem, 35vw, 15rem);
-
-        @media (min-width: 768px) {
-            height: clamp(4rem, 13vw + 3rem, 16rem);
-            width: clamp(4rem, 13vw + 3rem, 16rem);
-        }
-    }
-}
 
 @property --angle {
     syntax: "<angle>";
