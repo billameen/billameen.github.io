@@ -3,16 +3,9 @@
         {
             "name": "WolfTime - PWA",
             "overview": "Web Development",
-            "description": "Worked with a team of 2 to build a full-stack Progressive Web App (PWA) for students to find, RSVP to, and manage campus events at NC State. Users can create an account, log in, and track their events securely, all while using token-based authentication. We built the frontend with React and Material UI to make it responsive and easy to use on any device. The backend was built with Node.js, Express, and MySQL to handle user data and events. We used Docker to make development and deployment simple and reliable.",
+            "description": "Worked in a team of 3 to build a full-stack Progressive Web App (PWA) for students to find, RSVP to, and manage campus events at NC State. Users can create an account, log in, and track their events securely, all while using token-based authentication. We built the frontend with React and Material UI to make it responsive and easy to use on any device. The backend was built with Node.js, Express, and MySQL to handle user data and events. We used Docker to make development and deployment simple and reliable.",
             "tech": ["React", "Node.js", "MySQL", "Docker", "JWT", "MaterialUI", "Express.js", "Git", "HTML", "CSS", "JavaScript"],
             "image": ["../img/projects/wolftime1", "../img/projects/wolftime2"]
-        },
-        {
-            "name": "SimCLR Analysis",
-            "overview": "Data Visualization",
-            "description": "Conducted an in-depth analysis of the SimCLR algorithm by training a self-supervised learning model on image datasets. Utilized t-SNE to visualize the high-dimensional feature representations learned at various training epochs. Gained insights into representation learning and the effectiveness of contrastive learning in unsupervised settings.",
-            "tech": ["Python", "PyTorch", "Scikit Learn"],
-            "image": ["../img/projects/simclr1", "../img/projects/simclr2"]
         },
         {
             "name": "CoffeeMaker - SWE Project",
@@ -27,6 +20,13 @@
             "description": "Designed and implemented a custom multi-threaded, component-based 2D game engine optimized for platformer-style games. Developed core systems including entity-component architecture, collision, physics, rendering, and input handling using SDL2. Integrated ZeroMQ to support efficient networking and client-server communication, enabling multiplayer capabilities.",
             "tech": ["Visual Studio", "C++", "SDL 2", "ZMQ", "Git", "Windows"],
             "image": []
+        },
+        {
+            "name": "SimCLR Analysis",
+            "overview": "Data Visualization",
+            "description": "Conducted an in-depth analysis of the SimCLR algorithm by training a self-supervised learning model on image datasets. Utilized t-SNE to visualize the high-dimensional feature representations learned at various training epochs. Gained insights into representation learning and the effectiveness of contrastive learning in unsupervised settings.",
+            "tech": ["Python", "PyTorch", "Scikit Learn"],
+            "image": ["../img/projects/simclr1", "../img/projects/simclr2"]
         }
     ]
 }

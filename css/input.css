@@ -125,12 +125,12 @@ body {
     padding-right: .1em;
 
     display: flex;
+    flex-wrap: wrap;
 
     li {
         padding-left: .8em;
         padding-right: .8em;
-        margin-left: .5em;
-        margin-right: .5em;
+        margin: .5em;
         border-radius: 2em;
         backdrop-filter: blur(5px);
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -151,7 +151,7 @@ body {
 #project-card {
     border: 1px solid rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(8px);
-    @apply p-4 bg-glass-container max-w-xl text-white rounded-md;
+    @apply p-4 bg-glass-container max-w-xl text-white rounded-md hover:animate-tiptoe not-hover:animate-untiptoe;
     
 }
 

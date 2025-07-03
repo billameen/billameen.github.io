@@ -14,7 +14,7 @@
 
 
 <body>
-    
+
     <!-- <div id="croc"></div> -->
 
     <div id="top-bar">
@@ -38,68 +38,24 @@
             <h1 class="text-white text-4xl mb-2.5">My Projects</h1>
         </div>
 
-        <div class="grid grid-cols-12 grid-flow-dense">
-            <div id="project-tile">
-                <div id="project-card">
-                    <h2>Project Name</h2>
-                    <a class="block">Worked with a team of 2 to build a full-stack Progressive Web App (PWA) for students to find, RSVP to, and manage campus events at NC State. Users can create an account, log in, and track their events securely, all while using token-based authentication. We built the frontend with React and Material UI to make it responsive and easy to use on any device. The backend was built with Node.js, Express, and MySQL to handle user data and events. We used Docker to make development and deployment simple and reliable.</a>
-                    <div id="tech">
-                        <ul id="tech-list">
-                            <li><a>Library 1</a></li>
-                            <li><a>Framework 1</a></li>
-                            <li><a>Tool 1</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            
-            <div id="project-tile">
-                <div id="project-card">
-                    <h2>Project Name</h2>
-                    <a class="block">Conducted an in-depth analysis of the SimCLR algorithm by training a self-supervised learning model on image datasets. Utilized t-SNE to visualize the high-dimensional feature representations learned at various training epochs. Gained insights into representation learning and the effectiveness of contrastive learning in unsupervised settings.</a>
-                    <div id="tech">
-                        <ul id="tech-list">
-                            <li>Library 1</li>
-                            <li>Framework 1</li>
-                            <li>Tool 1</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div id="project-tile">
-                <div id="project-card">
-                    <h2>Project Name</h2>
-                    <img id="project-image">
-                    <a class="block">Description - Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil eum expedita ipsam sint, error, accusantium impedit unde officia voluptatibus nostrum possimus eligendi facere ducimus praesentium dolore vero. Quis, quam repellat?</a>
-                    <div id="tech">
-                        <ul id="tech-list">
-                            <li>Library 1</li>
-                            <li>Framework 1</li>
-                            <li>Tool 1</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div id="project-tile">
-                <div id="project-card">
-                    <h2>Project Name</h2>
-                    <img id="project-image">
-                    <a class="block">Description - Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil eum expedita ipsam sint, error, accusantium impedit unde officia voluptatibus nostrum possimus eligendi facere ducimus praesentium dolore vero. Quis, quam repellat?</a>
-                    <div id="tech">
-                        <ul id="tech-list">
-                            <li>Library 1</li>
-                            <li>Framework 1</li>
-                            <li>Tool 1</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            
+        <div id="project-list" class="grid grid-cols-12 grid-flow-dense">
+            <!---project tiles go here--->
         </div>
         
     </div>
+
+    <template id="project-tile-template">
+        <div id="project-tile">
+            <div id="project-card">
+                <h2 id="project-title"></h2>
+                <a id="project-desc" class="block"></a>
+                <div id="tech">
+                    <ul id="tech-list">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </template>
 
 </body>
 </html>

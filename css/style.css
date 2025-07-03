@@ -368,11 +368,11 @@ body {
   padding-left: .1em;
   padding-right: .1em;
   display: flex;
+  flex-wrap: wrap;
   li {
     padding-left: .8em;
     padding-right: .8em;
-    margin-left: .5em;
-    margin-right: .5em;
+    margin: .5em;
     border-radius: 2em;
     backdrop-filter: blur(5px);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -400,6 +400,17 @@ body {
   background-color: var(--main-glass-container-color);
   padding: calc(var(--spacing) * 4);
   color: var(--color-white);
+  &:not(*:hover) {
+    animation: untiptoe 1s ease forwards;
+  }
+  @media not (hover: hover) {
+    animation: untiptoe 1s ease forwards;
+  }
+  &:hover {
+    @media (hover: hover) {
+      animation: tiptoe 1s ease forwards;
+    }
+  }
 }
 @property --angle {
   syntax: "<angle>";
