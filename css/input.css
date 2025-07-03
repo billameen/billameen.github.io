@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 :root{
+    color: oklch(0.97 0.01 240);
     --main-bg-color: #0B132B;
     --main-shadow-color: #1C2541;
     --main-container-color: #3A506B;
@@ -31,8 +32,8 @@
 
     --animate-fade-in: fade-in 2s ease forwards;
     --animate-slide-down: slide-down 2s ease 1;
-    --animate-tiptoe: tiptoe 0.5s ease forwards;
-    --animate-untiptoe: untiptoe 0.5s ease forwards;
+    --animate-tiptoe: tiptoe 1s ease forwards;
+    --animate-untiptoe: untiptoe 1s ease forwards;
 
 }
 
@@ -59,13 +60,13 @@
         transform: translateY(0);
     }
     100% {
-        transform: translateY(-5%);
+        transform: translateY(-3%);
     }
 }
 
 @keyframes untiptoe {
     0% {
-        transform: translateY(-5%);
+        transform: translateY(-3%);
     }
     100% {
         transform: translateY(0);
@@ -75,12 +76,12 @@
 
 body {
     background-color: var(--main-bg-color);
-    color: var(--main-shadow-color);
     font-family: "Baskervville", serif;
 }
 
 .nav-button {
     transform: translateY(-110%);
+    color: var(--main-shadow-color);
     @apply bg-main-fg hover:bg-main-transition p-5 font-main basis-full;
     animation: slide-down 1s ease forwards, fade-in 2s ease forwards;
 }
@@ -99,45 +100,31 @@ body {
     right: 10px;
 }
 
-/* @media(prefers-reduced-motion) {
 
-} */
 
-/* #contact-info {
-    position: relative;
-    top: -50px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    display: none; hidden by default
-    z-index: 999;
-    border-radius: 10px;
-    backdrop-filter: blur(5px);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    background: rgba(255, 255, 255, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    color: white;} 
-*/
-
+/*--------------------*/
+/* Project Tile Stuff */
+/*--------------------*/
 #tech-list {
+    margin-top: .5em;
     padding-top: .5em;
     padding-bottom: .5em;
     padding-left: .1em;
     padding-right: .1em;
 
     display: flex;
+    flex-wrap: wrap;
 
     li {
-        padding-left: .5em;
-        padding-right: .5em;
-        margin-left: .5em;
-        margin-right: .5em;
-        border-radius: 10px;
+        padding-left: .8em;
+        padding-right: .8em;
+        margin: .5em;
+        border-radius: 2em;
         backdrop-filter: blur(5px);
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         background: rgba(111,255,233, 0.2);
         border: 1px solid rgba(255, 255, 255, 0.3);
-        color: white;
-        font-size: small;
+        font-size: 0.8rem;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -145,16 +132,28 @@ body {
 }
 
 #project-tile {
-    @apply p-2.5 col-span-12 md:col-span-6 lg:col-span-4;
+    @apply p-2.5 col-span-12 md:col-span-6;
 }
 
 #project-card {
     border: 1px solid rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(8px);
-    @apply p-4 bg-glass-container max-w-xl text-white rounded-md hover:animate-tiptoe not-hover:animate-untiptoe;
+    @apply p-4 bg-glass-container max-w-xl rounded-md hover:animate-tiptoe not-hover:animate-untiptoe;
     
 }
 
+#project-title {
+    @apply font-bold mb-3;
+}
+
+/* #project-overview {
+    @apply text-gray-500/75 text-xs mb-1;
+} */
+
+
+/*--------------------*/
+/* Profile Pic Stuff  */
+/*--------------------*/
 @property --angle {
     syntax: "<angle>";
     initial-value: 0deg;
@@ -194,6 +193,7 @@ body {
     filter: blur(1.5rem);
     opacity: 0.9;
 }
+
 
 #croc {
     border: 1px solid red;

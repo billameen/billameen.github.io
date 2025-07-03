@@ -7,7 +7,6 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
-    --color-white: #fff;
     --spacing: 0.25rem;
     --container-xl: 36rem;
     --text-4xl: 2.25rem;
@@ -200,6 +199,9 @@
   .w-full {
     width: 100%;
   }
+  .grid-flow-dense {
+    grid-auto-flow: dense;
+  }
   .grid-cols-12 {
     grid-template-columns: repeat(12, minmax(0, 1fr));
   }
@@ -211,10 +213,6 @@
   }
   .rounded-full {
     border-radius: calc(infinity * 1px);
-  }
-  .border-1 {
-    border-style: var(--tw-border-style);
-    border-width: 1px;
   }
   .bg-main-bg {
     background-color: var(--main-bg-color);
@@ -241,9 +239,6 @@
   .font-bold {
     --tw-font-weight: var(--font-weight-bold);
     font-weight: var(--font-weight-bold);
-  }
-  .text-white {
-    color: var(--color-white);
   }
   .sm\:h-60 {
     @media (width >= 40rem) {
@@ -286,8 +281,8 @@
     }
   }
 }
-@import url('https://fonts.googleapis.com/css2?family=Crete+Round:ital@0;1&family=Open+Sans:ital@0;1&family=Roboto+Condensed:ital,wght@0,700;1,700&display=swap');
 :root {
+  color: oklch(0.97 0.01 240);
   --main-bg-color: #0B132B;
   --main-shadow-color: #1C2541;
   --main-container-color: #3A506B;
@@ -320,12 +315,12 @@
     transform: translateY(0);
   }
   100% {
-    transform: translateY(-5%);
+    transform: translateY(-3%);
   }
 }
 @keyframes untiptoe {
   0% {
-    transform: translateY(-5%);
+    transform: translateY(-3%);
   }
   100% {
     transform: translateY(0);
@@ -333,11 +328,11 @@
 }
 body {
   background-color: var(--main-bg-color);
-  color: var(--main-shadow-color);
   font-family: "Baskervville", serif;
 }
 .nav-button {
   transform: translateY(-110%);
+  color: var(--main-shadow-color);
   flex-basis: 100%;
   background-color: var(--main-fg-color);
   padding: calc(var(--spacing) * 5);
@@ -361,23 +356,23 @@ body {
   right: 10px;
 }
 #tech-list {
+  margin-top: .5em;
   padding-top: .5em;
   padding-bottom: .5em;
   padding-left: .1em;
   padding-right: .1em;
   display: flex;
+  flex-wrap: wrap;
   li {
-    padding-left: .5em;
-    padding-right: .5em;
-    margin-left: .5em;
-    margin-right: .5em;
-    border-radius: 10px;
+    padding-left: .8em;
+    padding-right: .8em;
+    margin: .5em;
+    border-radius: 2em;
     backdrop-filter: blur(5px);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     background: rgba(111,255,233, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.3);
-    color: white;
-    font-size: small;
+    font-size: 0.8rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -389,9 +384,6 @@ body {
   @media (width >= 48rem) {
     grid-column: span 6 / span 6;
   }
-  @media (width >= 64rem) {
-    grid-column: span 4 / span 4;
-  }
 }
 #project-card {
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -400,18 +392,22 @@ body {
   border-radius: var(--radius-md);
   background-color: var(--main-glass-container-color);
   padding: calc(var(--spacing) * 4);
-  color: var(--color-white);
   &:not(*:hover) {
-    animation: untiptoe 0.5s ease forwards;
+    animation: untiptoe 1s ease forwards;
   }
   @media not (hover: hover) {
-    animation: untiptoe 0.5s ease forwards;
+    animation: untiptoe 1s ease forwards;
   }
   &:hover {
     @media (hover: hover) {
-      animation: tiptoe 0.5s ease forwards;
+      animation: tiptoe 1s ease forwards;
     }
   }
+}
+#project-title {
+  margin-bottom: calc(var(--spacing) * 3);
+  --tw-font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-bold);
 }
 @property --angle {
   syntax: "<angle>";
@@ -452,11 +448,6 @@ body {
   height: 50px;
   width: 50px;
 }
-@property --tw-border-style {
-  syntax: "*";
-  inherits: false;
-  initial-value: solid;
-}
 @property --tw-font-weight {
   syntax: "*";
   inherits: false;
@@ -469,7 +460,6 @@ body {
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
-      --tw-border-style: solid;
       --tw-font-weight: initial;
       --angle: 0deg;
     }

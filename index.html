@@ -14,11 +14,11 @@
 
 
 <body>
-    
+
     <!-- <div id="croc"></div> -->
 
     <div id="top-bar">
-        <nav id="navbar-list" class="flex justify-evenly text-center border-1">
+        <nav id="navbar-list" class="flex justify-evenly text-center border-1-[color-main-fg]">
             <a href="#Projects" class="nav-button font-bold">Projects</a>
             <a class="nav-button font-bold">Experience</a>
             <a class="nav-button font-bold">Games</a>
@@ -35,73 +35,27 @@
 
     <div id="Projects" class="p-4 md:pt-24 pb-26 xl:p-20">
         <div id="projects-header" class="p-2.5">
-            <h1 class="text-white text-4xl mb-2.5">My Projects</h1>
+            <h1 class= "text-4xl mb-2.5">My Projects</h1>
         </div>
 
-        <div class="grid grid-cols-12">
-            <div id="project-tile">
-                <div id="project-card">
-                    <h2>Project Name</h2>
-                    <img id="project-image">
-                    <a class="block">Description - Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil eum expedita ipsam sint, error, accusantium impedit unde officia voluptatibus nostrum possimus eligendi facere ducimus praesentium dolore vero. Quis, quam repellat?</a>
-                    <div id="tech">
-                        <ul id="tech-list">
-                            <li><a>Library 1</a></li>
-                            <li><a>Framework 1</a></li>
-                            <li><a>Tool 1</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            
-            <div id="project-tile">
-                <div id="project-card">
-                    <h2>Project Name</h2>
-                    <img id="project-image">
-                    <a class="block">Description - Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil eum expedita ipsam sint, error, accusantium impedit unde officia voluptatibus nostrum possimus eligendi facere ducimus praesentium dolore vero. Quis, quam repellat?</a>
-                    <div id="tech">
-                        <ul id="tech-list">
-                            <li>Library 1</li>
-                            <li>Framework 1</li>
-                            <li>Tool 1</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div id="project-tile">
-                <div id="project-card">
-                    <h2>Project Name</h2>
-                    <img id="project-image">
-                    <a class="block">Description - Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil eum expedita ipsam sint, error, accusantium impedit unde officia voluptatibus nostrum possimus eligendi facere ducimus praesentium dolore vero. Quis, quam repellat?</a>
-                    <div id="tech">
-                        <ul id="tech-list">
-                            <li>Library 1</li>
-                            <li>Framework 1</li>
-                            <li>Tool 1</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div id="project-tile">
-                <div id="project-card">
-                    <h2>Project Name</h2>
-                    <img id="project-image">
-                    <a class="block">Description - Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil eum expedita ipsam sint, error, accusantium impedit unde officia voluptatibus nostrum possimus eligendi facere ducimus praesentium dolore vero. Quis, quam repellat?</a>
-                    <div id="tech">
-                        <ul id="tech-list">
-                            <li>Library 1</li>
-                            <li>Framework 1</li>
-                            <li>Tool 1</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            
+        <div id="project-list" class="grid grid-cols-12 grid-flow-dense">
+            <!---project tiles go here--->
         </div>
-        
     </div>
+
+    <template id="project-tile-template">
+        <div id="project-tile">
+            <div id="project-card">
+                <h2 id="project-title"></h2>
+                <!-- <blockquote id="project-overview"></blockquote> -->
+                <a id="project-desc" class="block"></a>
+                <div id="tech">
+                    <ul id="tech-list">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </template>
 
 </body>
 </html>
