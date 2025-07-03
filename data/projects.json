@@ -10,7 +10,7 @@
         {
             "name": "CoffeeMaker - SWE Project",
             "overview": "Software Engineering", 
-            "description": "Built a full-stack web app with a team of 5 to manage cafe operations like menus, orders, and tracking. The app features secure login with different user roles—customers, baristas, and managers—each with access to specific tools. I developed the backend with Java and Spring Boot for handling logic, authentication, and the MySQL database, and built a responsive frontend with React, HTML, CSS, and Bootstrap. We followed best practices using GitHub for version control and project management.",
+            "description": "Built a full-stack web app with a team of 5 to manage cafe operations like menus, orders, and tracking. The app features secure login with different user roles like customers, baristas, and managers, each with access to specific tools. I developed the backend with Java and Spring Boot for handling logic, authentication, and the MySQL database, and built a responsive frontend with React, HTML, CSS, and Bootstrap. We followed best practices using GitHub for version control and project management.",
             "tech": ["Spring Boot", "Hibernate ORM", "React", "MySQL", "Git", "GitHub Actions", "Java", "HTML", "JavaScript"],
             "image": []
         },

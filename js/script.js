@@ -7,10 +7,10 @@ const projectList = document.getElementById("project-list");
 fetch("../data/projects.json").then( data => {
     data.json().then( projectData => {
         projectData.projects.forEach( (project) => {
-            console.log(project);
             
             const projectTile = projectTemplate.content.cloneNode(true);
             projectTile.getElementById("project-title").textContent = project.name;
+            // projectTile.getElementById("project-overview").textContent = project.overview;
             projectTile.getElementById("project-desc").textContent = project.description;
             
             const techList = projectTile.getElementById("tech-list");
