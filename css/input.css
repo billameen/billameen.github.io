@@ -55,24 +55,6 @@
     }
 }
 
-@keyframes tiptoe {
-    0% {
-        transform: translateY(0);
-    }
-    100% {
-        transform: translateY(-3%);
-    }
-}
-
-@keyframes untiptoe {
-    0% {
-        transform: translateY(-3%);
-    }
-    100% {
-        transform: translateY(0);
-    }
-}
-
 
 body {
     background-color: var(--main-bg-color);
@@ -136,10 +118,17 @@ body {
 }
 
 #project-card {
+    position: relative;
+    top: 0px;
     border: 1px solid rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(8px);
-    @apply p-4 bg-glass-container max-w-xl rounded-md hover:animate-tiptoe not-hover:animate-untiptoe;
+    @apply p-4 bg-glass-container max-w-xl rounded-md;
+    transition: all 0.3s ease-out;
     
+}
+
+#project-card:hover {
+    top:-6px;
 }
 
 #project-title {

@@ -386,23 +386,18 @@ body {
   }
 }
 #project-card {
+  position: relative;
+  top: 0px;
   border: 1px solid rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(8px);
   max-width: var(--container-xl);
   border-radius: var(--radius-md);
   background-color: var(--main-glass-container-color);
   padding: calc(var(--spacing) * 4);
-  &:not(*:hover) {
-    animation: untiptoe 1s ease forwards;
-  }
-  @media not (hover: hover) {
-    animation: untiptoe 1s ease forwards;
-  }
-  &:hover {
-    @media (hover: hover) {
-      animation: tiptoe 1s ease forwards;
-    }
-  }
+  transition: all 0.3s ease-out;
+}
+#project-card:hover {
+  top: -6px;
 }
 #project-title {
   margin-bottom: calc(var(--spacing) * 3);
