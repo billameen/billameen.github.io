@@ -1,12 +1,14 @@
 @import "tailwindcss";
 
 :root{
-    color: oklch(0.97 0.01 240);
+
+    color: #f0f8ff;
+    
     --main-bg-color: #0B132B;
     --main-shadow-color: #1C2541;
     --main-container-color: #3A506B;
     --main-transition-color: #5BC0BE;
-    --main-fg-color: #6FFFE9;
+    --main-fg-color: #397177;
 
     --main-glass-bg-color: rgba(11,19,43, 0.2);
     --main-glass-shadow-color: rgba(28,37,65, 0.2);
@@ -28,7 +30,7 @@
     --color-glass-transition: var(--main-glass-transition-color);
     --color-glass-fg: var(--main-glass-fg-color);
 
-    --font-main: "Baskervville", serif;
+    --font-main: "Poppins", serif;
 
     --animate-fade-in: fade-in 2s ease forwards;
     --animate-slide-down: slide-down 2s ease 1;
@@ -58,14 +60,32 @@
 
 body {
     background-color: var(--main-bg-color);
-    font-family: "Baskervville", serif;
 }
 
 .nav-button {
     transform: translateY(-110%);
-    color: var(--main-shadow-color);
-    @apply bg-main-fg hover:bg-main-transition p-5 font-main basis-full;
+    @apply p-5 text-2xl;
     animation: slide-down 1s ease forwards, fade-in 2s ease forwards;
+}
+
+.nav-button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 150%);
+    width: 80%;
+    height: 7%;
+    background-color: var(--main-transition-color);
+    z-index: -10;
+    transition: 
+        transform 0.25s ease-out,
+        bottom 0.25s ease-out;
+}
+
+.nav-button:hover::after {
+    transform: translate(-50%, -50%) scale(1, 6);
+    bottom: 100%;
 }
 
 .nav-button:nth-child(2) {
@@ -122,7 +142,7 @@ body {
     top: 0px;
     border: 1px solid rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(8px);
-    @apply p-4 bg-glass-container max-w-xl rounded-md;
+    @apply p-4 bg-glass-container rounded-md;
     transition: all 0.3s ease-out;
     
 }
@@ -132,7 +152,7 @@ body {
 }
 
 #project-title {
-    @apply font-bold mb-3;
+    @apply font-extrabold mb-3;
 }
 
 /* #project-overview {

@@ -1,6 +1,6 @@
-
-console.log("hi");
-
+/*****************************/
+/** Load Projects from JSON **/
+/*****************************/
 const projectTemplate = document.getElementById("project-tile-template");
 const projectList = document.getElementById("project-list");
 
@@ -26,3 +26,22 @@ fetch("../data/projects.json").then( data => {
         });
     });
 });
+
+
+
+
+/****************************/
+/** Observe Mouse Position **/
+/****************************/
+// const observer = new IntersectionObserver((entries) => {
+//     entries.forEach((entry) => {
+//         if (entry.isIntersecting) {
+//             entry.target.classList.add("show");
+//         } else {
+//             entry.target.classList.remove("show");
+//         }
+//     });
+// });
+
+// const hiddenElements = document.querySelectorAll(".hidden");
+// hiddenElements.forEach((el) => observer.observe(el));
