@@ -38,7 +38,17 @@
             <h1 class= "text-4xl mb-2.5 font-extrabold">My Projects</h1>
         </div>
 
-        <div id="project-list" class="grid grid-cols-12 grid-flow-dense">
+        <div id="project-list" class="grid grid-cols-12">
+            <!---project tiles go here--->
+        </div>
+    </div>
+
+    <div id="Experience" class="p-4 md:pt-24 pb-26 xl:p-20">
+        <div id="exp-header" class="p-2.5">
+            <h1 class= "text-4xl mb-2.5 font-extrabold">My Experience</h1>
+        </div>
+
+        <div id="experience-list" class="grid grid-cols-12 grid-flow-dense">
             <!---project tiles go here--->
         </div>
     </div>
@@ -52,6 +62,17 @@
                 <div id="tech">
                     <ul id="tech-list">
                     </ul>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="exp-tile-template">
+        <div id="exp-tile">
+            <div id="exp-card">
+                <h2 id="exp-title"></h2>
+                <div id="exp-desc">
+                    <ul id="exp-points"></ul>
                 </div>
             </div>
         </div>
