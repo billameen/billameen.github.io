@@ -27,6 +27,13 @@
             "description": "Conducted an in-depth analysis of the SimCLR algorithm by training a self-supervised learning model on image datasets. Utilized t-SNE to visualize the high-dimensional feature representations learned at various training epochs. Gained insights into representation learning and the effectiveness of contrastive learning in unsupervised settings.",
             "tech": ["Python", "PyTorch", "Scikit Learn"],
             "image": ["../img/projects/simclr1", "../img/projects/simclr2"]
+        },
+        {
+            "name": "AI Projects",
+            "overview": "Artificial Intelligence",
+            "description": "Developed a series of AI-focused projects using Java and Prolog, exploring both logic-based and heuristic problem-solving methods. Built an inductive logic programming system to infer rules from structured examples, and created an adversarial agent capable of making strategic decisions for the game Connect 4. Applied optimization techniques like hill climbing and simulated annealing to solve the linear assignment problem, balancing efficiency with solution quality. These projects demonstrate a strong grasp of AI concepts, including search algorithms, logical inference, and agent-based modeling.",
+            "tech": ["Java", "Java Swing", "Prolog"],
+            "image": []
         }
     ]
 }

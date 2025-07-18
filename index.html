@@ -6,7 +6,7 @@
     <link href="./css/style.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Baskervville:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <script defer src="./js/script.js"></script>
     <title>GitHub Pages</title>
 </head>
@@ -18,10 +18,10 @@
     <!-- <div id="croc"></div> -->
 
     <div id="top-bar">
-        <nav id="navbar-list" class="flex justify-evenly text-center border-1-[color-main-fg]">
+        <nav id="navbar-list" class="flex justify-evenly text-center">
             <a href="#Projects" class="nav-button font-bold">Projects</a>
             <a class="nav-button font-bold">Experience</a>
-            <a class="nav-button font-bold">Games</a>
+            <!-- <a class="nav-button font-bold"></a> -->
         </nav>
     </div>
     
@@ -35,10 +35,20 @@
 
     <div id="Projects" class="p-4 md:pt-24 pb-26 xl:p-20">
         <div id="projects-header" class="p-2.5">
-            <h1 class= "text-4xl mb-2.5">My Projects</h1>
+            <h1 class= "text-4xl mb-2.5 font-extrabold">My Projects</h1>
         </div>
 
-        <div id="project-list" class="grid grid-cols-12 grid-flow-dense">
+        <div id="project-list" class="grid grid-cols-12">
+            <!---project tiles go here--->
+        </div>
+    </div>
+
+    <div id="Experience" class="p-4 md:pt-24 pb-26 xl:p-20">
+        <div id="exp-header" class="p-2.5">
+            <h1 class= "text-4xl mb-2.5 font-extrabold">Experience</h1>
+        </div>
+
+        <div id="exp-list" class="grid grid-cols-12">
             <!---project tiles go here--->
         </div>
     </div>
@@ -53,6 +63,15 @@
                     <ul id="tech-list">
                     </ul>
                 </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="exp-tile-template">
+        <div id="exp-tile">
+            <div id="exp-card">
+                <h2 id="exp-title"></h2>
+                <ul id="exp-desc-list"></ul>
             </div>
         </div>
     </template>

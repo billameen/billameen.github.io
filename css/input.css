@@ -1,18 +1,20 @@
 @import "tailwindcss";
 
 :root{
-    color: oklch(0.97 0.01 240);
+
+    color: #f0f8ff;
+    
     --main-bg-color: #0B132B;
     --main-shadow-color: #1C2541;
     --main-container-color: #3A506B;
-    --main-transition-color: #5BC0BE;
-    --main-fg-color: #6FFFE9;
+    --main-transition-color: #6fffe9;
+    --main-fg-color: #00BFA6;
 
-    --main-glass-bg-color: rgba(11,19,43, 0.2);
-    --main-glass-shadow-color: rgba(28,37,65, 0.2);
-    --main-glass-container-color: rgba(58,80,107, 0.2);
-    --main-glass-transition-color: rgba(91,192,190, 0.2);
-    --main-glass-fg-color: rgba(111,255,233, 0.2);
+    --main-glass-bg-color: #0B132B33;
+    --main-glass-shadow-color: #1c254133;
+    --main-glass-container-color: #3a506b33;
+    --main-glass-transition-color: #6fffe933;
+    --main-glass-fg-color: #00BFA633;
 }
 
 @theme inline {
@@ -28,7 +30,7 @@
     --color-glass-transition: var(--main-glass-transition-color);
     --color-glass-fg: var(--main-glass-fg-color);
 
-    --font-main: "Baskervville", serif;
+    --font-main: "Poppins", serif;
 
     --animate-fade-in: fade-in 2s ease forwards;
     --animate-slide-down: slide-down 2s ease 1;
@@ -55,35 +57,35 @@
     }
 }
 
-@keyframes tiptoe {
-    0% {
-        transform: translateY(0);
-    }
-    100% {
-        transform: translateY(-3%);
-    }
-}
-
-@keyframes untiptoe {
-    0% {
-        transform: translateY(-3%);
-    }
-    100% {
-        transform: translateY(0);
-    }
-}
-
 
 body {
     background-color: var(--main-bg-color);
-    font-family: "Baskervville", serif;
 }
 
 .nav-button {
     transform: translateY(-110%);
-    color: var(--main-shadow-color);
-    @apply bg-main-fg hover:bg-main-transition p-5 font-main basis-full;
+    @apply p-5 text-2xl;
     animation: slide-down 1s ease forwards, fade-in 2s ease forwards;
+}
+
+.nav-button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 175%);
+    width: 80%;
+    height: 7%;
+    background-color: var(--main-fg-color);
+    z-index: -10;
+    transition: 
+        transform 0.25s ease-out,
+        bottom 0.25s ease-out;
+}
+
+.nav-button:hover::after {
+    transform: translate(-50%, -50%) scale(1, 6);
+    bottom: 100%;
 }
 
 .nav-button:nth-child(2) {
@@ -122,8 +124,8 @@ body {
         border-radius: 2em;
         backdrop-filter: blur(5px);
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        background: rgba(111,255,233, 0.2);
-        border: 1px solid rgba(255, 255, 255, 0.3);
+        background: var(--main-glass-fg-color);
+        border: 1px solid var(--main-glass-fg-color);
         font-size: 0.8rem;
         white-space: nowrap;
         overflow: hidden;
@@ -136,14 +138,21 @@ body {
 }
 
 #project-card {
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    position: relative;
+    top: 0px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(8px);
-    @apply p-4 bg-glass-container max-w-xl rounded-md hover:animate-tiptoe not-hover:animate-untiptoe;
+    @apply p-4 bg-glass-container rounded-md;
+    transition: all 0.3s ease-out;
     
 }
 
+#project-card:hover {
+    top:-6px;
+}
+
 #project-title {
-    @apply font-bold mb-3;
+    @apply font-extrabold mb-3;
 }
 
 /* #project-overview {
@@ -161,15 +170,10 @@ body {
 }
 
 #pfp-wrapper::after, #pfp-wrapper::before {
+    animation-delay: 0.2s;
     content: '';
     background-image: conic-gradient(
-        from var(--angle), 
-        purple,
-        hotpink,
-        chartreuse,
-        teal, 
-        blue, 
-        purple);
+        from var(--angle), lightblue, teal, lightblue, teal, lightblue);
     height: 102%;
     width: 102%;
     position: absolute;
@@ -203,4 +207,35 @@ body {
     right: 100px;
     height: 50px;
     width: 50px;
+}
+
+
+
+/*-----------------------*/
+/* Experience Tile Stuff */
+/*-----------------------*/
+#exp-tile {
+    @apply p-2.5 col-span-12 md:col-span-6;
+}
+
+#exp-card {
+    position: relative;
+    top: 0px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(8px);
+    @apply p-4 bg-glass-container rounded-md;
+    transition: all 0.3s ease-out;
+    
+}
+
+#exp-card:hover {
+    top:-6px;
+}
+
+#exp-title {
+    @apply font-extrabold mb-3;
+}
+
+#exp-desc-list {
+    @apply px-5 list-disc;    
 }
