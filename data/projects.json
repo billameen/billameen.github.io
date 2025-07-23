@@ -3,9 +3,10 @@
         {
             "name": "WolfTime - PWA",
             "overview": "Web Development",
-            "short-description": "a campus event web app that allows NC State students to discover, RSVP to, and manage events. The app supports secure account creation, login, and event tracking.",
+            "short-description": "A campus event web app that allows NC State students to discover, RSVP to, and manage events. The app supports secure account creation, login, and event tracking.",
             "description": "Worked in a team of 3 to build a full-stack Progressive Web App (PWA) for students to find, RSVP to, and manage campus events at NC State. Users can create an account, log in, and track their events securely, all while using token-based authentication. We built the frontend with React and Material UI to make it responsive and easy to use on any device. The backend was built with Node.js, Express, and MySQL to handle user data and events. We used Docker to make development and deployment simple and reliable.",
             "tech": ["React", "Node.js", "MySQL", "Docker", "JWT", "MaterialUI", "Express.js", "Git", "HTML", "CSS", "JavaScript"],
+            "repo": "",
             "image": ["../img/projects/wolftime1", "../img/projects/wolftime2"]
         },
         {
@@ -14,6 +15,7 @@
             "short-description": "Worked with a team to develop a web app for managing café operations, including menus, orders, and user roles. The app features secure login and tailored tools for customers, baristas, and managers.",
             "description": "Built a full-stack web app with a team of 5 to manage cafe operations like menus, orders, and tracking. The app features secure login with different user roles like customers, baristas, and managers, each with access to specific tools. I developed the backend with Java and Spring Boot for handling logic, authentication, and the MySQL database, and built a responsive frontend with React, HTML, CSS, and Bootstrap. We followed best practices using GitHub for version control and project management.",
             "tech": ["Spring Boot", "Hibernate ORM", "React", "MySQL", "Git", "GitHub Actions", "Java", "HTML", "JavaScript"],
+            "repo": "",
             "image": []
         },
         {
@@ -22,6 +24,7 @@
             "short-description": "Designed and built a custom multi-threaded 2D game engine optimized for platformers, featuring collision, physics, rendering, and input systems. Added multiplayer support through efficient client-server communication using integrated networking.",
             "description": "Designed and implemented a custom multi-threaded, component-based 2D game engine optimized for platformer-style games. Developed core systems including entity-component architecture, collision, physics, rendering, and input handling using SDL2. Integrated ZeroMQ to support efficient networking and client-server communication, enabling multiplayer capabilities.",
             "tech": ["Visual Studio", "C++", "SDL 2", "ZMQ", "Git", "Windows"],
+            "repo": "",
             "image": []
         },
         {
@@ -30,6 +33,7 @@
             "short-description": "Analyzed the SimCLR algorithm by training a self-supervised model and visualizing learned features with t-SNE. Explored how contrastive learning improves representation quality in unsupervised settings.",
             "description": "Conducted an in-depth analysis of the SimCLR algorithm by training a self-supervised learning model on image datasets. Utilized t-SNE to visualize the high-dimensional feature representations learned at various training epochs. Gained insights into representation learning and the effectiveness of contrastive learning in unsupervised settings.",
             "tech": ["Python", "PyTorch", "Scikit Learn"],
+            "repo": "",
             "image": ["../img/projects/simclr1", "../img/projects/simclr2"]
         },
         {
@@ -38,6 +42,16 @@
             "short-description": "Created AI projects exploring logic-based and heuristic problem-solving, including an inductive logic programming system and a strategic agent for Connect 4. Applied optimization techniques like hill climbing and simulated annealing to solve the linear assignment problem.",
             "description": "Developed a series of AI-focused projects using Java and Prolog, exploring both logic-based and heuristic problem-solving methods. Built an inductive logic programming system to infer rules from structured examples, and created an adversarial agent capable of making strategic decisions for the game Connect 4. Applied optimization techniques like hill climbing and simulated annealing to solve the linear assignment problem, balancing efficiency with solution quality. These projects demonstrate a strong grasp of AI concepts, including search algorithms, logical inference, and agent-based modeling.",
             "tech": ["Java", "Java Swing", "Prolog"],
+            "repo": "",
+            "image": []
+        },
+        {
+            "name": "Portfolio Website",
+            "overview": "Web Development",
+            "short-description": "Designed a responsive portfolio website to showcase academic, technical, and volunteer experiences in a clean, single-page layout. Focused on user-friendly navigation and easy content updates using structured JSON.",
+            "description": "Designed and developed a responsive portfolio website to showcase academic, technical, and volunteer experiences. Built using HTML, CSS, and JavaScript with a focus on clean design and user-friendly navigation. The site organizes project highlights, and experience summaries, into an accessible, single-page layout, with structured JSON content for easy updates and future scalability.",
+            "tech": ["HTML", "CSS", "JavaScript", "Tailwind CSS", "Git"],
+            "repo": "https://github.com/billameen/billameen.github.io.git",
             "image": []
         }
     ]
