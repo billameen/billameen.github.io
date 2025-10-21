@@ -1,10 +1,10 @@
 @import "tailwindcss";
-
+/* npx @tailwindcss/cli -i ./css/input.css -o ./css/style.css --watch */
 :root{
 
     color: #f0f8ff;
     
-    --main-bg-color: #0B132B;
+    --main-bg-color: #001220;
     --main-shadow-color: #1C2541;
     --main-container-color: #3A506B;
     --main-transition-color: #6fffe9;
@@ -76,7 +76,7 @@ body {
     transform: translate(-50%, 175%);
     width: 80%;
     height: 7%;
-    background-color: var(--main-fg-color);
+    background-color: var(--main-bg-color);
     z-index: -10;
     transition: 
         transform 0.25s ease-out,
@@ -207,4 +207,24 @@ body {
     right: 100px;
     height: 50px;
     width: 50px;
+}
+
+
+.spacer {
+    /* position: relative; */
+    width: 100%;
+    aspect-ratio: 900 / 300;
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
+}
+
+.transition_image {
+    background-image: url('../img/svg/top-waves0.svg');
+}
+
+@media (min-width: 500px) {
+    .spacer {
+      aspect-ratio: 900 / 200;
+    }
 }

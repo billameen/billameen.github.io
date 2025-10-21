@@ -7,8 +7,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script defer src="https://cdn.jsdelivr.net/npm/animejs/dist/bundles/anime.umd.min.js"></script>
+    <script defer src="./js/anime.js"></script>
     <script defer src="./js/script.js"></script>
-    <title>GitHub Pages</title>
+    <title>My Portfolio Website</title>
 </head>
 
 
@@ -17,20 +19,30 @@
 
     <!-- <div id="croc"></div> -->
 
-    <div id="top-bar">
-        <nav id="navbar-list" class="flex justify-evenly text-center">
+    <div id="top-bar" class="overflow-visible">
+        <nav id="navbar-list" class="flex justify-evenly text-center bg-linear-to-t from-[#1C9E8F] to-main-fg">
             <a href="#Projects" class="nav-button font-bold">Projects</a>
             <a class="nav-button font-bold">Experience</a>
             <a class="nav-button font-bold">Games</a>
         </nav>
+
+        <!-- <div class="spacer transition_image"></div>      -->
+        <object id="navbar-transition" data="./img/svg/top-waves0.svg" type="image/svg+xml"></object>
+
     </div>
     
-    <div id="about-me" class="bg-main-bg flex justify-center mt-10">
+
+    
+    
+
+    <div id="about-me" class="bg-main-bg flex justify-center mt-0.5">
         <div id="pfp-wrapper" class="relative object-cover rounded-full w-32 h-32 sm:w-60 sm:h-60 md:w-70 md:h-70 lg:w-80 lg:h-80 mx-auto">
             <img id="profilepic" class="w-full h-full object-cover rounded-full relative z-10" src="./img/pictureOfMyself.jpg" alt="A Picture of Me!">
         </div>
+
     </div>
 
+    
     
 
     <div id="Projects" class="p-4 md:pt-24 pb-26 xl:p-20">
@@ -56,6 +68,5 @@
             </div>
         </div>
     </template>
-
 </body>
 </html>
