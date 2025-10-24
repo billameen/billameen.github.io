@@ -1,24 +1,24 @@
-import { animate } from 'animejs';
-
+// import { animate } from 'animejs';
+console.log("running js");
 const wavesList = [
-    '../img/svg/top-waves0', 
-    '../img/svg/top-waves1', 
-    '../img/svg/top-waves2', 
-    '../img/svg/top-waves3', 
-    '../img/svg/top-waves4', 
-    '../img/svg/top-waves5', 
-    '../img/svg/top-waves6', 
-    '../img/svg/top-waves7', 
-    '../img/svg/top-waves8', 
+    './img/svg/top-waves0.svg', 
+    './img/svg/top-waves1.svg', 
+    './img/svg/top-waves2.svg', 
+    './img/svg/top-waves3.svg', 
+    './img/svg/top-waves4.svg', 
+    './img/svg/top-waves5.svg', 
+    './img/svg/top-waves6.svg', 
+    './img/svg/top-waves7.svg', 
+    './img/svg/top-waves8.svg', 
 ];
 
 const currentTransition = document.getElementById('navbar-transition');
 
 
-function changeTransition(idx) {
-    currentTransition.attributes.data = wavesList[idx];
+function changeTransition() {
+    let idx = 9 * Math.random();
+    currentTransition.setAttribute('data', wavesList[idx]);
     console.log("transition");
 }
 
-let i = 0;
-setInterval(changeTransition, 1000, (i++)%9);
+setInterval(changeTransition, 1000)
