@@ -1,4 +1,3 @@
-# billameen.github.io
+# My Portfolio Website
 
-Copyright © 2025 Bilal Ameen. All rights reserved.
-This code is private and may not be used, copied, modified, or distributed without explicit permission.
+This project was created using `bun init` in bun v1.3.13. [Bun](https://bun.com) is a fast all-in-one JavaScript runtime.
