@@ -4,7 +4,7 @@
 const projectTemplate = document.getElementById("project-tile-template");
 const projectList = document.getElementById("project-list");
 
-fetch("../data/projects.json").then( data => {
+fetch("./data/projects.json").then( data => {
     data.json().then( projectData => {
         projectData.projects.forEach( (project) => {
             
@@ -35,7 +35,7 @@ fetch("../data/projects.json").then( data => {
 const expTemplate = document.getElementById("exp-tile-template");
 const expList = document.getElementById("exp-list");
 
-fetch("../data/experience.json").then( data => {
+fetch("./data/experience.json").then( data => {
     data.json().then( experienceData => {
         experienceData.experiences.forEach( (experience) => {
             

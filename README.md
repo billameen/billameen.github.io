@@ -1,4 +1,15 @@
-# billameen.github.io
+# my-app
 
-Copyright © 2025 Bilal Ameen. All rights reserved.
-This code is private and may not be used, copied, modified, or distributed without explicit permission.
+To install dependencies:
+
+```bash
+bun install
+```
+
+To run:
+
+```bash
+bun run index.ts
+```
+
+This project was created using `bun init` in bun v1.3.13. [Bun](https://bun.com) is a fast all-in-one JavaScript runtime.
