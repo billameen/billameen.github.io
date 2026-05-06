@@ -2,5 +2,9 @@
   "name": "my-app",
   "module": "index.ts",
   "private": true,
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.2.4",
+    "tailwindcss": "^4.2.4"
+  }
 }
