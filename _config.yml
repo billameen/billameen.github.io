@@ -1,0 +1,17 @@
+lang: en
+title: My Portfolio Website
+description: >-
+  A website for fun.
+url: "billameen.github.io"
+baseurl: ""
+
+exclude:
+  - "*.gem"
+  - "*.gemspec"
+  - doc
+  - tools
+  - README.md
+  - LICENSE
+  - purgecss.js
+  - "*.config.js"
+  - "package*.json"

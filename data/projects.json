@@ -84,6 +84,78 @@
             "tech": ["HTML", "CSS", "JavaScript", "Tailwind CSS", "Git"],
             "repo": "https://github.com/billameen/billameen.github.io.git",
             "image": []
-        }
+        },
+        {
+            "name": "Self Driving Car",
+            "overview": "Autonomous Driving System",
+            "short-description": "Developed a ROS 2-based autonomous driving system in Python and C for a physical vehicle, featuring real-time lane following, obstacle avoidance, and embedded low-latency control systems.",
+            "description": [
+                "Developed a ROS 2-based autonomous driving system using Python and C, enabling real-time lane following, obstacle avoidance, and full navigation on a physical vehicle.",
+                "Engineered computer vision pipelines with OpenCV for lane detection and tracking, integrating camera and LiDAR data for robust real-time perception.",
+                "Designed and tuned PID controllers for steering and throttle control to improve vehicle stability and responsiveness.",
+                "Built embedded communication and control systems using C on Teensy and Arduino microcontrollers, implementing CAN messaging and sensor integration for reliable low-latency actuation.",
+                "Improved lane-following stability by approximately 25% through PID tuning and optimization of the OpenCV pipeline, achieving real-time performance at 30 FPS."
+            ],
+            "tech": [
+                "Python",
+                "C",
+                "ROS 2",
+                "OpenCV",
+                "LiDAR",
+                "Teensy",
+                "Arduino",
+                "CAN Bus"
+            ],
+            "repo": "",
+            "image": []
+        },
+        {
+            "name": "Siemens Healthineers RAG Assistant",
+            "overview": "Retrieval-Augmented Generation Research",
+            "short-description": "Built and evaluated a modular RAG architecture to study how retrieval quality, chunking strategies, and prompt design affect LLM response accuracy and coherence.",
+            "description": [
+                "Implemented a modular retrieval-augmented generation (RAG) architecture to analyze the effects of retrieval quality, chunking strategies, and prompt engineering on LLM output accuracy.",
+                "Explored trade-offs between embedding granularity, retrieval recall, and response coherence in vector-based semantic search systems.",
+                "Built an end-to-end ingestion pipeline for loading, chunking, embedding, and indexing documents for semantic search workflows.",
+                "Used Python, LangChain, ChromaDB, and Gemini models to generate grounded, document-aware responses from large language models.",
+                "Conducted experimentation and evaluation on retrieval and generation pipelines to better understand performance and accuracy characteristics in enterprise AI systems."
+            ],
+            "tech": [
+                "Python",
+                "LangChain",
+                "ChromaDB",
+                "Gemini",
+                "Vector Embeddings",
+                "RAG",
+                "LLMs"
+            ],
+            "repo": "",
+            "image": []
+        },
+        {
+            "name": "Automated Event Operations Dashboard (7PointScheduleCreator)",
+            "overview": "Operations Automation Dashboard",
+            "short-description": "Built an automated event operations dashboard that scrapes scheduling data, processes logistics, and visualizes daily workflows through an interactive web interface.",
+            "description": [
+              "Developed an automated dashboard that scrapes event scheduling data and visualizes operational workflows in a locally hosted web interface.",
+              "Built a Playwright-based web scraping pipeline to authenticate, navigate dynamic pages, and extract event logistics data.",
+              "Implemented scheduling and deadline calculation logic using Pendulum to normalize inconsistent time formats.",
+              "Designed a responsive frontend with HTML, CSS, and JavaScript featuring timeline-based task visualization and interactive task tracking.",
+              "Added asynchronous data loading, auto-scrolling, current-time highlighting, and task completion controls to improve usability.",
+              "Created a lightweight Python HTTP server for simplified local deployment and automated browser launching.",
+              "Configured secure environment-based credential management and customizable filtering rules for schedule generation."
+            ],
+            "tech": [
+              "Python",
+              "JavaScript",
+              "HTML5",
+              "CSS3",
+              "Playwright",
+              "Pendulum",
+              "HTTP Server"
+            ],
+            "repo": "",
+            "image": []
+          }
     ]
 }

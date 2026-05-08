@@ -182,7 +182,7 @@ h1, h2, h3, .nav-button {
 }
 
 #project-desc-list, #exp-desc-list {
-    @apply pl-4 list-disc text-slate-300 text-sm space-y-2 leading-relaxed flex-grow;
+    @apply pl-4 list-disc text-slate-300 text-sm space-y-2 leading-relaxed grow;
 }
 
 #project-desc-list li::marker, #exp-desc-list li::marker {
