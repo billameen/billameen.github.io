@@ -27,7 +27,7 @@ fetch("./data/projects.json").then( data => {
 
             });
 
-            projectList.append(projectTile);
+            projectList.prepend(projectTile);
 
         });
     });
@@ -55,11 +55,39 @@ fetch("./data/experience.json").then( data => {
                 expDesc.appendChild(item);
             });
 
-            expList.append(expTile);
+            expList.prepend(expTile);
 
         });
     });
 });
+
+
+/*******************************/
+/**  Load Research from JSON  **/
+/*******************************/
+const resTemplate = document.getElementById("exp-tile-template");
+const resList = document.getElementById("exp-list");
+
+fetch("./data/research.json").then( data => {
+    data.json().then( experienceData => {
+        experienceData.experiences.forEach( (experience) => {
+            
+            const expTile = expTemplate.content.cloneNode(true);
+            expTile.getElementById("exp-title").textContent = experience.title;
+
+            const expDesc = expTile.getElementById("exp-desc-list");
+            experience.description.forEach( e => {
+                const item = document.createElement("li");
+                item.textContent = e;
+                expDesc.appendChild(item);
+            });
+
+            expList.prepend(expTile);
+
+        });
+    });
+});
+
 
 
 

@@ -1,0 +1,29 @@
+{
+    "name": "Research Projects in AI Systems (Cache Replacement & Quantum Compilation)",
+    "overview": "AI Research in Systems and Quantum Computing",
+    "short-description": "Conducted research applying machine learning and generative AI to systems optimization and quantum circuit synthesis, developing experimental frameworks, datasets, and evaluation pipelines.",
+    "projects": [
+      {
+        "name": "Generative AI for Cache Replacement",
+        "description": "Designed an LLM-in-the-loop evolutionary framework to automatically generate and optimize cache replacement policies. Reproduced and benchmarked classical and state-of-the-art policies (LRU, SHiP, Hawkeye, RRIP) on SPEC-like workloads under strict metadata constraints. Engineered prompt strategies and iterative tuning methods to improve policy diversity and performance. Conducted ablation studies and performance analysis to identify high-efficiency cache replacement strategies.",
+        "tech": [
+          "Python",
+          "Large Language Models",
+          "Evolutionary Algorithms",
+          "Systems Simulation",
+          "Performance Benchmarking"
+        ]
+      },
+      {
+        "name": "AI and Machine Learning for Quantum Compilation",
+        "description": "Developed an ML-driven pipeline to generate optimized block-encoding quantum circuits from operator matrices. Built an automated dataset generation system for large-scale operator–circuit training data. Integrated a circuit verification system into the training loop to ensure correctness and penalize invalid outputs. Designed quantum-aware optimization metrics, including circuit volume minimization, to outperform heuristic-based synthesis approaches.",
+        "tech": [
+          "Python",
+          "Machine Learning",
+          "Quantum Computing",
+          "Quantum Circuit Synthesis",
+          "Optimization Algorithms"
+        ]
+      }
+    ]
+  }
