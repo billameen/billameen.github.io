@@ -106,3 +106,18 @@ fetch("./data/research.json").then( data => {
 
 // const hiddenElements = document.querySelectorAll(".hidden");
 // hiddenElements.forEach((el) => observer.observe(el));
+
+/****************************/
+/** Navbar Scroll Behavior **/
+/****************************/
+const topBar = document.getElementById("top-bar");
+
+window.addEventListener("scroll", () => {
+    if (topBar) {
+        if (window.scrollY > 50) {
+            topBar.classList.add("collapsed");
+        } else {
+            topBar.classList.remove("collapsed");
+        }
+    }
+});

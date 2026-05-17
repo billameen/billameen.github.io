@@ -3,7 +3,7 @@
 :root {
     color: #e0f2fe;
     overscroll-behavior: none;
-    
+
     --main-bg-color: #020617;
     --main-shadow-color: #010409;
     --main-container-color: #0f172a;
@@ -38,19 +38,39 @@
 }
 
 @keyframes fade-in {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
 @keyframes slide-down {
-    0% { transform: translateY(-100%); opacity: 0; }
-    100% { transform: translateY(0); opacity: 1; }
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 @keyframes gradient-bg {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 body {
@@ -64,7 +84,10 @@ body {
 }
 
 /* Typography Enhancements */
-h1, h2, h3, .nav-button {
+h1,
+h2,
+h3,
+.nav-button {
     font-family: "Outfit", sans-serif;
     letter-spacing: -0.02em;
 }
@@ -78,47 +101,86 @@ h1, h2, h3, .nav-button {
 
 /* Navigation */
 #top-bar {
-    position: sticky;
-    top: 0;
+    position: fixed;
+    top: 1.5rem;
+    right: clamp(1rem, 3vw, 2rem);
     z-index: 50;
-    background: rgba(2, 6, 23, 0.6);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(56, 189, 248, 0.1);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.3);
+
+    border-radius: 9999px;
+    padding: 0 clamp(1.5rem, 4vw, 3rem);
+
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+    max-width: calc(100vw - 2rem);
+    height: 48px;
+}
+
+#top-bar.collapsed {
+    max-width: 48px;
+    padding: 0;
+    background: linear-gradient(135deg, rgba(14, 165, 233, 0.15) 0%, rgba(2, 6, 23, 0.3) 100%);
+    border-color: rgba(56, 189, 248, 0.3);
+    box-shadow: 0 10px 40px -10px rgba(2, 132, 199, 0.2);
+}
+
+#top-bar.collapsed:hover {
+    max-width: calc(100vw - 2rem);
+    padding: 0 clamp(1.5rem, 4vw, 3rem);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 40px -10px rgba(2, 132, 199, 0.3);
+}
+
+#navbar-list {
+    transition: opacity 0.3s ease, transform 0.4s ease;
+    width: max-content;
+    display: flex;
+    gap: clamp(1.5rem, 5vw, 4rem);
+}
+
+#top-bar.collapsed:not(:hover) #navbar-list {
+    opacity: 0;
+    transform: scale(0.8);
+    pointer-events: none;
 }
 
 .nav-button {
-    @apply p-5 text-xl font-medium tracking-wide transition-colors duration-300;
+    @apply text-base md:text-lg font-medium tracking-wide transition-colors duration-300;
     opacity: 0;
     animation: slide-down 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     position: relative;
     color: #bae6fd;
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: center;
 }
 
 .nav-button:hover {
     color: #ffffff;
 }
 
-.nav-button::after {
-    content: '';
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #38bdf8, transparent);
-    transition: width 0.3s ease;
+.nav-button:nth-child(1) {
+    animation-delay: 0.1s;
 }
 
-.nav-button:hover::after {
-    width: 60%;
+.nav-button:nth-child(2) {
+    animation-delay: 0.2s;
 }
 
-.nav-button:nth-child(1) { animation-delay: 0.1s; }
-.nav-button:nth-child(2) { animation-delay: 0.2s; }
-.nav-button:nth-child(3) { animation-delay: 0.3s; }
+.nav-button:nth-child(3) {
+    animation-delay: 0.3s;
+}
 
 /* Tech Tags */
 #tech-list {
@@ -148,14 +210,16 @@ h1, h2, h3, .nav-button {
 }
 
 /* Glassmorphism Cards */
-#project-tile, #exp-tile {
+#project-tile,
+#exp-tile {
     @apply p-3 col-span-12 md:col-span-6 lg:col-span-4;
     opacity: 0;
     animation: fade-in 1s ease-out forwards;
     animation-delay: 0.4s;
 }
 
-#project-card, #exp-card {
+#project-card,
+#exp-card {
     position: relative;
     height: 100%;
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
@@ -165,32 +229,37 @@ h1, h2, h3, .nav-button {
     border-radius: 1rem;
     @apply p-6;
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 10px 40px -10px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.3);
     display: flex;
     flex-direction: column;
 }
 
-#project-card:hover, #exp-card:hover {
+#project-card:hover,
+#exp-card:hover {
     transform: translateY(-8px) scale(1.02);
     border-color: rgba(56, 189, 248, 0.3);
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
     box-shadow: 0 20px 40px -10px rgba(2, 132, 199, 0.2);
 }
 
-#project-title, #exp-title {
+#project-title,
+#exp-title {
     @apply text-xl font-bold mb-3 text-white;
 }
 
-#project-desc-list, #exp-desc-list {
+#project-desc-list,
+#exp-desc-list {
     @apply pl-4 list-disc text-slate-300 text-sm space-y-2 leading-relaxed grow;
 }
 
-#project-desc-list li::marker, #exp-desc-list li::marker {
+#project-desc-list li::marker,
+#exp-desc-list li::marker {
     color: #38bdf8;
 }
 
 /* Background Ambient Lights */
-.ambient-light-1, .ambient-light-2 {
+.ambient-light-1,
+.ambient-light-2 {
     position: fixed;
     border-radius: 50%;
     filter: blur(100px);
@@ -204,7 +273,7 @@ h1, h2, h3, .nav-button {
     left: -10%;
     width: 50vw;
     height: 50vw;
-    background: radial-gradient(circle, rgba(14,165,233,0.3) 0%, rgba(0,0,0,0) 70%);
+    background: radial-gradient(circle, rgba(14, 165, 233, 0.3) 0%, rgba(0, 0, 0, 0) 70%);
 }
 
 .ambient-light-2 {
@@ -212,6 +281,5 @@ h1, h2, h3, .nav-button {
     right: -10%;
     width: 60vw;
     height: 60vw;
-    background: radial-gradient(circle, rgba(56,189,248,0.2) 0%, rgba(0,0,0,0) 70%);
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
 }
-
