@@ -1,0 +1,89 @@
+/*****************************/
+/** Load Projects from JSON **/
+/*****************************/
+const projectTemplate = document.getElementById("project-tile-template");
+const projectList = document.getElementById("project-list");
+
+fetch("./data/projects.json").then( data => {
+    data.json().then( projectData => {
+        projectData.projects.forEach( (project) => {
+            
+            const projectTile = projectTemplate.content.cloneNode(true);
+            projectTile.getElementById("project-title").textContent = project.name;
+            // projectTile.getElementById("project-overview").textContent = project.overview;
+            
+            const projectDesc = projectTile.getElementById("project-desc-list");
+            project.description.forEach( e => {
+                const item = document.createElement("li");
+                item.textContent = e;
+                projectDesc.appendChild(item);
+            });
+            
+            const techList = projectTile.getElementById("tech-list");
+            project.tech.forEach( e => {
+                const item = document.createElement("li");
+                item.textContent = e;
+                techList.appendChild(item);
+
+            });
+
+            projectList.prepend(projectTile);
+
+        });
+    });
+});
+
+
+
+/*******************************/
+/** Load Experience from JSON **/
+/*******************************/
+const expTemplate = document.getElementById("exp-tile-template");
+const expList = document.getElementById("exp-list");
+
+fetch("./data/experience.json").then( data => {
+    data.json().then( experienceData => {
+        experienceData.experiences.forEach( (experience) => {
+            
+            const expTile = expTemplate.content.cloneNode(true);
+            expTile.getElementById("exp-title").textContent = experience.title;
+
+            const expDesc = expTile.getElementById("exp-desc-list");
+            experience.description.forEach( e => {
+                const item = document.createElement("li");
+                item.textContent = e;
+                expDesc.appendChild(item);
+            });
+
+            expList.prepend(expTile);
+
+        });
+    });
+});
+
+
+/*******************************/
+/**  Load Research from JSON  **/
+/*******************************/
+const resTemplate = document.getElementById("exp-tile-template");
+const resList = document.getElementById("exp-list");
+
+fetch("./data/research.json").then( data => {
+    data.json().then( experienceData => {
+        experienceData.experiences.forEach( (experience) => {
+            
+            const expTile = expTemplate.content.cloneNode(true);
+            expTile.getElementById("exp-title").textContent = experience.title;
+
+            const expDesc = expTile.getElementById("exp-desc-list");
+            experience.description.forEach( e => {
+                const item = document.createElement("li");
+                item.textContent = e;
+                expDesc.appendChild(item);
+            });
+
+            expList.prepend(expTile);
+
+        });
+    });
+});
