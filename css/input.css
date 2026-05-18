@@ -3,7 +3,7 @@
 :root {
     color: #e0f2fe;
     overscroll-behavior: none;
-    
+
     --main-bg-color: #020617;
     --main-shadow-color: #010409;
     --main-container-color: #0f172a;
@@ -38,19 +38,39 @@
 }
 
 @keyframes fade-in {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
 @keyframes slide-down {
-    0% { transform: translateY(-100%); opacity: 0; }
-    100% { transform: translateY(0); opacity: 1; }
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 @keyframes gradient-bg {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 body {
@@ -64,7 +84,10 @@ body {
 }
 
 /* Typography Enhancements */
-h1, h2, h3, .nav-button {
+h1,
+h2,
+h3,
+.nav-button {
     font-family: "Outfit", sans-serif;
     letter-spacing: -0.02em;
 }
@@ -76,24 +99,91 @@ h1, h2, h3, .nav-button {
     background-clip: text;
 }
 
+
+
+
+
 /* Navigation */
+
+/* Base navbar styles */
 #top-bar {
-    position: sticky;
-    top: 0;
+    position: fixed;
+    top: 1.5rem;
+    right: clamp(1rem, 3vw, 2rem);
     z-index: 50;
-    background: rgba(2, 6, 23, 0.6);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(56, 189, 248, 0.1);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+
+    /* Glassmorphism effect */
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    /* Modern border with subtle gradient effect */
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+
+    /* Shape and layout */
+    border-radius: 9999px;
+    padding: 0 clamp(1.5rem, 4vw, 3rem);
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    max-width: calc(100vw - 2rem);
+
+    /* Single, comprehensive transition */
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* Hamburger button (mobile only) */
+#hamburger-btn {
+    display: none;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #7dd3fc;
+    z-index: 10;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s ease;
+}
+
+#hamburger-btn:hover {
+    color: #ffffff;
+}
+
+/* Navigation list */
+#navbar-list {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    gap: clamp(1.5rem, 5vw, 4rem);
+    /* Expand: Text fades in AFTER pill expands (0.35s delay) */
+    transition: opacity 0.3s ease 0.1s, visibility 0s 0.1s;
+}
+
+/* Individual nav buttons */
 .nav-button {
-    @apply p-5 text-xl font-medium tracking-wide transition-colors duration-300;
-    opacity: 0;
-    animation: slide-down 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+
+    font-size: clamp(0.875rem, 2vw, 1.125rem);
+    font-weight: 600;
+    letter-spacing: 0.025em;
+    color: #7dd3fc;
+
+    text-decoration: none;
+    transition: color 0.3s ease;
     position: relative;
-    color: #bae6fd;
 }
 
 .nav-button:hover {
@@ -103,22 +193,153 @@ h1, h2, h3, .nav-button {
 .nav-button::after {
     content: '';
     position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: -4px;
+    left: 0;
     width: 0;
     height: 2px;
-    background: linear-gradient(90deg, transparent, #38bdf8, transparent);
-    transition: width 0.3s ease;
+    background: linear-gradient(90deg, #7dd3fc, rgba(125, 211, 252, 0.5));
+    transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .nav-button:hover::after {
-    width: 60%;
+    width: 100%;
 }
 
-.nav-button:nth-child(1) { animation-delay: 0.1s; }
-.nav-button:nth-child(2) { animation-delay: 0.2s; }
-.nav-button:nth-child(3) { animation-delay: 0.3s; }
+/* Desktop - navbar scroll behavior */
+@media (min-width: 769px) {
+    #top-bar.scrolled #navbar-list {
+        visibility: hidden;
+        opacity: 0;
+        pointer-events: none;
+        /* Collapse: Text fades out IMMEDIATELY (no delay) */
+        transition: opacity 0.2s ease, visibility 0s 0.2s;
+    }
+    
+    #top-bar {
+        padding: 0 clamp(1.5rem, 4vw, 3rem);
+    }
+
+    /* Scrolled state - collapsed to circle */
+    #top-bar.scrolled {
+        padding: 0;
+        max-width: 48px; /* Use max-width instead of width for smooth animation */
+        border-radius: 50%;
+        background: linear-gradient(135deg, rgba(14, 165, 233, 0.12), rgba(2, 6, 23, 0.25));
+        border-color: rgba(56, 189, 248, 0.25);
+        box-shadow: 0 8px 32px rgba(2, 132, 199, 0.15), inset 0 1px 1px rgba(125, 211, 252, 0.1);
+        /* Collapse: Pill shrinks AFTER text fades (0.1s delay) */
+        transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
+    }
+
+    /* Hover on circle expands with menu */
+    #top-bar.scrolled:hover {
+        padding: 0 clamp(1.5rem, 4vw, 3rem);
+        max-width: calc(100vw - 2rem);
+        border-radius: 9999px;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+        border-color: rgba(255, 255, 255, 0.12);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+        /* Expand: Pill expands IMMEDIATELY */
+        transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    #top-bar.scrolled:hover #navbar-list {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        /* Expand: Text fades in AFTER pill expands */
+        transition: opacity 0.3s ease 0.1s, visibility 0s 0.1s;
+    }
+}
+
+/* Mobile view */
+@media (max-width: 768px) {
+    #top-bar {
+        width: 48px;
+        height: 48px;
+        padding: 0;
+        border-radius: 1.5rem;
+    }
+
+    #hamburger-btn {
+        display: flex;
+    }
+
+    #navbar-list {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        flex-direction: column;
+        width: 100%;
+        gap: 1.5rem;
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+        padding: 0 2rem;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+
+    /* Expanded state */
+    #top-bar.mobile-open {
+        width: 100%;
+        height: auto;
+        max-width: 240px;
+        padding: 1rem 2rem;
+        border-radius: 1.5rem;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+        border-color: rgba(255, 255, 255, 0.12);
+    }
+
+    #top-bar.mobile-open #hamburger-btn {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    #top-bar.mobile-open #navbar-list {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+}
+
+/* Navbar animations */
+@keyframes slide-in-down {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Only apply animation on mobile open to avoid clutter */
+@media (max-width: 768px) {
+    #top-bar.mobile-open .nav-button {
+        animation: slide-in-down 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    #top-bar.mobile-open .nav-button:nth-child(1) {
+        animation-delay: 0.05s;
+    }
+
+    #top-bar.mobile-open .nav-button:nth-child(2) {
+        animation-delay: 0.1s;
+    }
+
+    #top-bar.mobile-open .nav-button:nth-child(3) {
+        animation-delay: 0.15s;
+    }
+}
+
+
+
+
+
+
 
 /* Tech Tags */
 #tech-list {
@@ -148,14 +369,16 @@ h1, h2, h3, .nav-button {
 }
 
 /* Glassmorphism Cards */
-#project-tile, #exp-tile {
+#project-tile,
+#exp-tile {
     @apply p-3 col-span-12 md:col-span-6 lg:col-span-4;
     opacity: 0;
     animation: fade-in 1s ease-out forwards;
     animation-delay: 0.4s;
 }
 
-#project-card, #exp-card {
+#project-card,
+#exp-card {
     position: relative;
     height: 100%;
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
@@ -165,32 +388,37 @@ h1, h2, h3, .nav-button {
     border-radius: 1rem;
     @apply p-6;
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 10px 40px -10px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.3);
     display: flex;
     flex-direction: column;
 }
 
-#project-card:hover, #exp-card:hover {
+#project-card:hover,
+#exp-card:hover {
     transform: translateY(-8px) scale(1.02);
     border-color: rgba(56, 189, 248, 0.3);
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
     box-shadow: 0 20px 40px -10px rgba(2, 132, 199, 0.2);
 }
 
-#project-title, #exp-title {
+#project-title,
+#exp-title {
     @apply text-xl font-bold mb-3 text-white;
 }
 
-#project-desc-list, #exp-desc-list {
+#project-desc-list,
+#exp-desc-list {
     @apply pl-4 list-disc text-slate-300 text-sm space-y-2 leading-relaxed grow;
 }
 
-#project-desc-list li::marker, #exp-desc-list li::marker {
+#project-desc-list li::marker,
+#exp-desc-list li::marker {
     color: #38bdf8;
 }
 
 /* Background Ambient Lights */
-.ambient-light-1, .ambient-light-2 {
+.ambient-light-1,
+.ambient-light-2 {
     position: fixed;
     border-radius: 50%;
     filter: blur(100px);
@@ -204,7 +432,7 @@ h1, h2, h3, .nav-button {
     left: -10%;
     width: 50vw;
     height: 50vw;
-    background: radial-gradient(circle, rgba(14,165,233,0.3) 0%, rgba(0,0,0,0) 70%);
+    background: radial-gradient(circle, rgba(14, 165, 233, 0.3) 0%, rgba(0, 0, 0, 0) 70%);
 }
 
 .ambient-light-2 {
@@ -212,6 +440,5 @@ h1, h2, h3, .nav-button {
     right: -10%;
     width: 60vw;
     height: 60vw;
-    background: radial-gradient(circle, rgba(56,189,248,0.2) 0%, rgba(0,0,0,0) 70%);
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
 }
-
