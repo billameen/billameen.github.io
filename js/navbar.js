@@ -1,9 +1,9 @@
 
 /* 
-  Enhanced Navbar with Scroll-Aware Behavior
-  
-  Desktop: Collapses to circle on scroll down, expands to full navbar on scroll up
-  Mobile: Toggle menu with hamburger, auto-close on nav click
+    Enhanced Navbar with Scroll-Aware Behavior
+
+    Desktop: Collapses to circle on scroll down, expands to full navbar on scroll up
+    Mobile: Toggle menu with hamburger, auto-close on nav click
 */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Desktop scroll behavior
     if (window.innerWidth >= 769) {
         window.addEventListener('scroll', () => {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollTop = window.scrollY || document.documentElement.scrollTop;
             
             // Determine scroll direction
             if (scrollTop > lastScrollTop) {
@@ -69,3 +69,154 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+    Navbar text animations
+*/
+
+const aboutme1 = document.getElementById("aboutme-text-1");
+const aboutme2 = document.getElementById("aboutme-text-2");
+const mywork1 = document.getElementById("mywork-text-1");
+const mywork2 = document.getElementById("mywork-text-2");
+const mygames1 = document.getElementById("mygames-text-1");
+const mygames2 = document.getElementById("mygames-text-2");
+gsap.registerPlugin(SplitText);
+
+const aboutmebutton = document.getElementById("about-me-button");
+const myworkbutton = document.getElementById("my-work-button");
+const mygamesbutton = document.getElementById("my-games-button");
+
+let splitA1, splitA2, splitW1, splitW2, splitG1, splitG2;
+
+function initAnimations() {
+    splitA1?.revert();
+    splitA2?.revert();
+    splitW1?.revert();
+    splitW2?.revert();
+    splitG1?.revert();
+    splitG2?.revert();
+
+    splitA1 = SplitText.create(aboutme1, { type: "chars" });
+    splitA2 = SplitText.create(aboutme2, { type: "chars" });
+    splitW1 = SplitText.create(mywork1, { type: "chars" });
+    splitW2 = SplitText.create(mywork2, { type: "chars" });
+    splitG1 = SplitText.create(mygames1, { type: "chars" });
+    splitG2 = SplitText.create(mygames2, { type: "chars" });
+
+
+    // Initial state
+    gsap.set(splitA2.chars, {
+        yPercent: 100,
+        autoAlpha: 0
+    });
+    gsap.set(splitW2.chars, {
+        yPercent: 100,
+        autoAlpha: 0
+    });
+    gsap.set(splitG2.chars, {
+        yPercent: 100,
+        autoAlpha: 0
+    });
+
+    const tlA = gsap.timeline({
+        paused: true,
+        defaults: {
+            duration: 0.25,
+            ease: "power2.out"
+        }
+    });
+
+    const tlW = gsap.timeline({
+        paused: true,
+        defaults: {
+            duration: 0.25,
+            ease: "power2.out"
+        }
+    });
+
+    const tlG = gsap.timeline({
+        paused: true,
+        defaults: {
+            duration: 0.25,
+            ease: "power2.out"
+        }
+    });
+
+    // First text exits upward
+    tlA.to(splitA1.chars, {
+        yPercent: -100,
+        autoAlpha: 0,
+        stagger: 0.02
+    }, 0);
+
+    // Second text enters from below
+    tlA.to(splitA2.chars, {
+        yPercent: 0,
+        autoAlpha: 1,
+        stagger: 0.02
+    }, 0);
+
+
+    tlW.to(splitW1.chars, {
+        yPercent: -100,
+        autoAlpha: 0,
+        stagger: 0.02
+    }, 0);
+
+    tlW.to(splitW2.chars, {
+        yPercent: 0,
+        autoAlpha: 1,
+        stagger: 0.02
+    }, 0);
+
+
+    tlG.to(splitG1.chars, {
+        yPercent: -100,
+        autoAlpha: 0,
+        stagger: 0.02
+    }, 0);
+
+    tlG.to(splitG2.chars, {
+        yPercent: 0,
+        autoAlpha: 1,
+        stagger: 0.02
+    }, 0);
+
+
+    aboutmebutton.addEventListener("mouseenter", () => {
+        tlA.play();
+    });
+
+    aboutmebutton.addEventListener("mouseleave", () => {
+        tlA.reverse();
+    });
+
+    myworkbutton.addEventListener("mouseenter", () => {
+        tlW.play();
+    });
+
+    myworkbutton.addEventListener("mouseleave", () => {
+        tlW.reverse();
+    });
+
+    mygamesbutton.addEventListener("mouseenter", () => {
+        tlG.play();
+    });
+
+    mygamesbutton.addEventListener("mouseleave", () => {
+        tlG.reverse();
+    });
+}
+
+initAnimations();
