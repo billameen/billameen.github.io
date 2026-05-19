@@ -225,6 +225,12 @@
   .grid {
     display: grid;
   }
+  .inline {
+    display: inline;
+  }
+  .h-16 {
+    height: calc(var(--spacing) * 16);
+  }
   .h-32 {
     height: calc(var(--spacing) * 32);
   }
@@ -233,6 +239,9 @@
   }
   .h-full {
     height: 100%;
+  }
+  .w-16 {
+    width: calc(var(--spacing) * 16);
   }
   .w-32 {
     width: calc(var(--spacing) * 32);
@@ -325,6 +334,9 @@
   .to-indigo-500 {
     --tw-gradient-to: var(--color-indigo-500);
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
+  .object-contain {
+    object-fit: contain;
   }
   .object-cover {
     object-fit: cover;
@@ -915,6 +927,12 @@ h1, h2, h3, .nav-button {
   width: 60vw;
   height: 60vw;
   background: radial-gradient(circle, rgba(56, 189, 248, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
+}
+.logo-img {
+  height: calc(var(--spacing) * 12);
+  width: calc(var(--spacing) * 12);
+  flex-shrink: 0;
+  object-fit: contain;
 }
 @property --tw-rotate-x {
   syntax: "*";

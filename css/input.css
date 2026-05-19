@@ -214,7 +214,7 @@ h3,
         /* Collapse: Text fades out IMMEDIATELY (no delay) */
         transition: opacity 0.2s ease, visibility 0s 0.2s;
     }
-    
+
     #top-bar {
         padding: 0 clamp(1.5rem, 4vw, 3rem);
     }
@@ -222,7 +222,8 @@ h3,
     /* Scrolled state - collapsed to circle */
     #top-bar.scrolled {
         padding: 0;
-        max-width: 48px; /* Use max-width instead of width for smooth animation */
+        max-width: 48px;
+        /* Use max-width instead of width for smooth animation */
         border-radius: 50%;
         background: linear-gradient(135deg, rgba(14, 165, 233, 0.12), rgba(2, 6, 23, 0.25));
         border-color: rgba(56, 189, 248, 0.25);
@@ -441,4 +442,10 @@ h3,
     width: 60vw;
     height: 60vw;
     background: radial-gradient(circle, rgba(56, 189, 248, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
+}
+
+
+
+.logo-img {
+    @apply w-12 h-12 shrink-0 object-contain;
 }
