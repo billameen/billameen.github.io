@@ -1,0 +1,59 @@
+<div id="Projects" class="p-4 md:pt-24 pb-26 xl:p-20">
+    <div id="projects-header" class="p-2.5">
+        <h1 class="text-4xl mb-2.5 font-extrabold">My Projects</h1>
+    </div>
+
+    <div id="project-list" class="grid grid-cols-12">
+        {% for project in site.data.projects.projects reversed %}
+        <div class="project-tile">
+            <div class="project-card">
+                <h2 class="project-title">{{ project.name }}</h2>
+                <ul class="project-desc-list">
+                    {% for line in project.description %}
+                    <li>{{ line }}</li>
+                    {% endfor %}
+                </ul>
+                <div>
+                    <ul class="tech-list">
+                        {% for tech in project.tech %}
+                        <li>{{ tech }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div id="Experience" class="p-4 md:pt-24 pb-26 xl:p-20">
+    <div id="exp-header" class="p-2.5">
+        <h1 class="text-4xl mb-2.5 font-extrabold">Experience</h1>
+    </div>
+
+    <div id="exp-list" class="grid grid-cols-12">
+        {% for experience in site.data.experience.experiences reversed %}
+        <div class="exp-tile">
+            <div class="exp-card">
+                <h2 class="exp-title">{{ experience.title }}</h2>
+                <ul class="exp-desc-list">
+                    {% for line in experience.description %}
+                    <li>{{ line }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% endfor %}
+
+        {% for project in site.data.research.projects reversed %}
+        <div class="exp-tile">
+            <div class="exp-card">
+                <h2 class="exp-title">{{ project.name }}</h2>
+                <ul class="exp-desc-list">
+                    <li>{{ project.description }}</li>
+                </ul>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>

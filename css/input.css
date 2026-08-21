@@ -88,7 +88,7 @@ h1,
 h2,
 h3,
 .nav-button {
-    font-family: "Outfit", sans-serif;
+    font-family: var(--font-main);
     letter-spacing: -0.02em;
 }
 
@@ -214,7 +214,7 @@ h3,
         /* Collapse: Text fades out IMMEDIATELY (no delay) */
         transition: opacity 0.2s ease, visibility 0s 0.2s;
     }
-    
+
     #top-bar {
         padding: 0 clamp(1.5rem, 4vw, 3rem);
     }
@@ -222,7 +222,8 @@ h3,
     /* Scrolled state - collapsed to circle */
     #top-bar.scrolled {
         padding: 0;
-        max-width: 48px; /* Use max-width instead of width for smooth animation */
+        max-width: 48px;
+        /* Use max-width instead of width for smooth animation */
         border-radius: 50%;
         background: linear-gradient(135deg, rgba(14, 165, 233, 0.12), rgba(2, 6, 23, 0.25));
         border-color: rgba(56, 189, 248, 0.25);
@@ -342,14 +343,14 @@ h3,
 
 
 /* Tech Tags */
-#tech-list {
+.tech-list {
     margin-top: 1rem;
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
 }
 
-#tech-list li {
+.tech-list li {
     padding: 0.25rem 0.75rem;
     border-radius: 9999px;
     background: rgba(14, 165, 233, 0.1);
@@ -362,23 +363,23 @@ h3,
     transition: all 0.2s ease;
 }
 
-#tech-list li:hover {
+.tech-list li:hover {
     background: rgba(14, 165, 233, 0.2);
     border-color: rgba(56, 189, 248, 0.4);
     transform: translateY(-1px);
 }
 
 /* Glassmorphism Cards */
-#project-tile,
-#exp-tile {
+.project-tile,
+.exp-tile {
     @apply p-3 col-span-12 md:col-span-6 lg:col-span-4;
     opacity: 0;
     animation: fade-in 1s ease-out forwards;
     animation-delay: 0.4s;
 }
 
-#project-card,
-#exp-card {
+.project-card,
+.exp-card {
     position: relative;
     height: 100%;
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
@@ -393,26 +394,26 @@ h3,
     flex-direction: column;
 }
 
-#project-card:hover,
-#exp-card:hover {
+.project-card:hover,
+.exp-card:hover {
     transform: translateY(-8px) scale(1.02);
     border-color: rgba(56, 189, 248, 0.3);
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
     box-shadow: 0 20px 40px -10px rgba(2, 132, 199, 0.2);
 }
 
-#project-title,
-#exp-title {
+.project-title,
+.exp-title {
     @apply text-xl font-bold mb-3 text-white;
 }
 
-#project-desc-list,
-#exp-desc-list {
+.project-desc-list,
+.exp-desc-list {
     @apply pl-4 list-disc text-slate-300 text-sm space-y-2 leading-relaxed grow;
 }
 
-#project-desc-list li::marker,
-#exp-desc-list li::marker {
+.project-desc-list li::marker,
+.exp-desc-list li::marker {
     color: #38bdf8;
 }
 
@@ -441,4 +442,206 @@ h3,
     width: 60vw;
     height: 60vw;
     background: radial-gradient(circle, rgba(56, 189, 248, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
+}
+
+
+
+.logo-img {
+    @apply w-12 h-12 shrink-0 object-contain;
+}
+
+/* Tech River */
+#row1,
+#row2,
+#row3 {
+    overflow: hidden;
+    width: 100%;
+}
+
+.tech-track {
+    width: max-content;
+    will-change: transform;
+}
+
+/* Highlighted Projects — card deck */
+.highlight-card {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+}
+
+.highlight-card:first-child {
+    opacity: 1;
+}
+
+.highlight-card-inner {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: 1.25rem;
+    padding: 1.75rem;
+    box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.4);
+}
+
+.highlight-img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 0.75rem;
+    margin-bottom: 1.25rem;
+}
+
+.highlight-img-placeholder {
+    width: 100%;
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.75rem;
+    margin-bottom: 1.25rem;
+    background: rgba(56, 189, 248, 0.08);
+    color: #38bdf8;
+}
+
+.highlight-img-placeholder svg {
+    width: 48px;
+    height: 48px;
+}
+
+.highlight-overview {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #7dd3fc;
+    margin-bottom: 0.5rem;
+}
+
+.highlight-title {
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.75rem;
+}
+
+.highlight-desc {
+    font-size: 0.9375rem;
+    color: #cbd5e1;
+    line-height: 1.6;
+    flex-grow: 1;
+}
+
+/* Contact form */
+.contact-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: 1.25rem;
+    padding: 2rem;
+    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.3);
+}
+
+.form-input {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    color: #e0f2fe;
+    font-family: var(--font-main);
+    resize: vertical;
+    transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.form-input::placeholder {
+    color: rgba(224, 242, 254, 0.4);
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: rgba(56, 189, 248, 0.4);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.form-submit {
+    align-self: flex-start;
+    padding: 0.75rem 2rem;
+    border-radius: 9999px;
+    background: linear-gradient(90deg, #38bdf8, #818cf8);
+    color: #020617;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
+.form-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px -8px rgba(56, 189, 248, 0.5);
+}
+
+/* Hero 3D background */
+#hero-canvas {
+    background: var(--main-bg-color);
+}
+
+.hero-glow-1,
+.hero-glow-2 {
+    position: absolute;
+    z-index: 1;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+}
+
+.hero-glow-1 {
+    top: 10%;
+    left: 12%;
+    width: 22rem;
+    height: 22rem;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.35) 0%, transparent 70%);
+}
+
+.hero-glow-2 {
+    bottom: 8%;
+    right: 10%;
+    width: 18rem;
+    height: 18rem;
+    background: radial-gradient(circle, rgba(245, 158, 11, 0.2) 0%, transparent 70%);
+}
+
+/* Static fallback when reduced-motion/WebGL is unavailable — no canvas, just a glow */
+#about-me.hero-fallback-active {
+    background: radial-gradient(ellipse 80% 60% at 50% 30%, rgba(56, 189, 248, 0.14), transparent 70%),
+        radial-gradient(ellipse 60% 50% at 70% 70%, rgba(129, 140, 248, 0.1), transparent 70%);
+}
+
+#about-me.hero-fallback-active #hero-canvas {
+    display: none;
+}
+
+/* Section background differentiation — one continuous gradient so adjacent
+   zones blend into each other instead of each section fading to transparent
+   independently at its own edges (which left a washed-out seam at the boundary). */
+#section-flow {
+    position: relative;
+    background: linear-gradient(
+        180deg,
+        rgba(3, 12, 33, 0.75) 0%,
+        rgba(7, 17, 41, 0.8) 18%,
+        rgba(13, 15, 45, 0.75) 40%,
+        rgba(19, 15, 54, 0.8) 58%,
+        rgba(15, 12, 46, 0.8) 78%,
+        rgba(12, 10, 31, 0.85) 100%
+    );
 }

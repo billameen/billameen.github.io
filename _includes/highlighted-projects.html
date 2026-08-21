@@ -1,0 +1,31 @@
+{% assign featured = site.data.projects.projects | where: "featured", true %}
+
+<div id="high-projects-title" class="text-center mb-10 px-6">
+    <h2 class="text-4xl font-extrabold text-white mb-2">Highlighted <span class="text-gradient">Projects</span></h2>
+    <p class="text-slate-400">A few projects I'm especially proud of</p>
+</div>
+
+<div id="high-projects-container" class="relative w-full max-w-xl mx-auto h-[460px] px-6">
+    {% for project in featured %}
+    <div class="highlight-card" style="z-index: {{ forloop.rindex }};" data-index="{{ forloop.index0 }}">
+        <div class="highlight-card-inner">
+            {% assign img = project.image | first %}
+            {% if img %}
+            <img src="{{ img | replace: '../img/projects/', '/img/projects/' }}.png" alt="{{ project.name }}" class="highlight-img">
+            {% else %}
+            <div class="highlight-img-placeholder">
+                <i data-lucide="code-2"></i>
+            </div>
+            {% endif %}
+            <span class="highlight-overview">{{ project.overview }}</span>
+            <h3 class="highlight-title">{{ project.name }}</h3>
+            <p class="highlight-desc">{{ project["short-description"] }}</p>
+            <ul class="tech-list">
+                {% for tech in project.tech limit: 5 %}
+                <li>{{ tech }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    {% endfor %}
+</div>

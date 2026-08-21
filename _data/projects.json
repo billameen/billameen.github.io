@@ -13,7 +13,8 @@
             ],
             "tech": ["React", "Node.js", "MySQL", "Docker", "JWT", "MaterialUI", "Express.js", "Git", "HTML", "CSS", "JavaScript"],
             "repo": "",
-            "image": ["../img/projects/wolftime1", "../img/projects/wolftime2"]
+            "image": ["../img/projects/wolftime1", "../img/projects/wolftime2"],
+            "featured": true
         },
         {
             "name": "CoffeeMaker - SWE Project",
@@ -107,7 +108,8 @@
                 "CAN Bus"
             ],
             "repo": "",
-            "image": []
+            "image": [],
+            "featured": true
         },
         {
             "name": "Siemens Healthineers RAG Assistant",
@@ -130,7 +132,8 @@
                 "LLMs"
             ],
             "repo": "",
-            "image": []
+            "image": [],
+            "featured": true
         },
         {
             "name": "Automated Event Operations Dashboard (7PointScheduleCreator)",
@@ -155,7 +158,8 @@
               "HTTP Server"
             ],
             "repo": "",
-            "image": []
+            "image": [],
+            "featured": true
           }
     ]
 }
