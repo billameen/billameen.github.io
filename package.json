@@ -1,9 +1,7 @@
 {
-  "name": "my-app",
-  "module": "index.ts",
+  "name": "billameen-github-io",
   "private": true,
-  "type": "module",
-  "dependencies": {
+  "devDependencies": {
     "@tailwindcss/cli": "^4.2.4",
     "tailwindcss": "^4.2.4"
   }
