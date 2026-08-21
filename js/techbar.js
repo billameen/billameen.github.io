@@ -68,7 +68,7 @@ function buildTrack(rowEl, logosForRow) {
     const track = document.createElement("div");
     track.className = "tech-track flex flex-row items-center gap-8";
 
-    // Render the logo set twice back-to-back so animating to xPercent:-50 loops seamlessly
+    // Render the logo set twice back-to-back so the loop wraps seamlessly
     for (let copy = 0; copy < 2; copy++) {
         logosForRow.forEach((logo) => {
             const size = sizeForLogo(logo);
@@ -84,6 +84,46 @@ function buildTrack(rowEl, logosForRow) {
 
     rowEl.appendChild(track);
     return track;
+}
+
+// Continuous per-frame position update with modulo wraparound, driven directly
+// off gsap.ticker — deliberately NOT a gsap.to(...).repeat(-1) tween, because
+// this loop's speed is also being modulated every frame for cursor-reactivity
+// (see mousemove below), and mutating timeScale() on a tween that's mid-repeat
+// can visibly hiccup right at the wrap point. Plain arithmetic + modulo has no
+// "repeat boundary" to desync, so there's nothing to reset/stutter at.
+function createMarquee(track, { direction, duration }) {
+    let halfWidth = track.scrollWidth / 2;
+    let position = direction === 1 ? 0 : -halfWidth;
+
+    // quickSetter applies the transform directly without gsap.set's per-call
+    // property parsing — cheap enough to call every single frame for every row.
+    const setX = gsap.quickSetter(track, "x", "px");
+    setX(position);
+
+    return {
+        get pxPerSecond() {
+            return halfWidth / duration;
+        },
+        refresh() {
+            halfWidth = track.scrollWidth / 2;
+        },
+        step(deltaSeconds, speedMultiplier) {
+            position += direction * this.pxPerSecond * speedMultiplier * deltaSeconds;
+
+            // Wrap back into the canonical (-halfWidth, 0] window so the loop never
+            // "resets" — it just keeps counting through the same repeating space.
+            // (Works the same for both directions: a position past either edge is
+            // shifted by exactly one copy-width, landing on the visually identical
+            // point in the duplicated content, so there's no discontinuity to see.)
+            if (halfWidth > 0) {
+                while (position <= -halfWidth) position += halfWidth;
+                while (position > 0) position -= halfWidth;
+            }
+
+            setX(position);
+        },
+    };
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -109,12 +149,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (typeof gsap === "undefined") return;
 
-    // Rows 1 & 3 drift left, row 2 drifts right (mirrored), for a "current" feel
-    const tweens = {
-        row1: gsap.to(track1, { xPercent: -50, duration: 46, ease: "none", repeat: -1 }),
-        row2: gsap.fromTo(track2, { xPercent: -50 }, { xPercent: 0, duration: 38, ease: "none", repeat: -1 }),
-        row3: gsap.to(track3, { xPercent: -50, duration: 54, ease: "none", repeat: -1 }),
+    // Rows 1 & 3 drift left (direction -1), row 2 drifts right (direction 1),
+    // mirrored, for a "current" feel — like sponsor decals streaming past on an F1 car.
+    const marquees = {
+        row1: createMarquee(track1, { direction: -1, duration: 46 }),
+        row2: createMarquee(track2, { direction: 1, duration: 38 }),
+        row3: createMarquee(track3, { direction: -1, duration: 54 }),
     };
+
+    window.addEventListener("resize", () => {
+        marquees.row1.refresh();
+        marquees.row2.refresh();
+        marquees.row3.refresh();
+    });
 
     const targetSpeed = { row1: 1, row2: 1, row3: 1 };
     const currentSpeed = { row1: 1, row2: 1, row3: 1 };
@@ -137,10 +184,15 @@ document.addEventListener("DOMContentLoaded", () => {
         targetSpeed.row3 = 1;
     });
 
-    gsap.ticker.add(() => {
+    gsap.ticker.add((time, deltaTime) => {
+        // Clamp so a slow/blocked frame (tab backgrounded for a moment, a GC pause,
+        // the hero's WebGL frame taking longer than usual) can't make the marquee
+        // visibly jump — it moves at most one "slow frame" worth of distance instead
+        // of trying to catch up all at once on the next tick.
+        const deltaSeconds = Math.min(deltaTime / 1000, 1 / 30);
         for (const key of Object.keys(currentSpeed)) {
             currentSpeed[key] += (targetSpeed[key] - currentSpeed[key]) * 0.08;
-            tweens[key].timeScale(currentSpeed[key]);
+            marquees[key].step(deltaSeconds, currentSpeed[key]);
         }
     });
 });

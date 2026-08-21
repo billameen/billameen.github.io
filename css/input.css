@@ -620,6 +620,19 @@ h3,
     background: radial-gradient(circle, rgba(245, 158, 11, 0.2) 0%, transparent 70%);
 }
 
+/* Fade the hero's bottom edge into #section-flow's own starting tone, so the
+   hero → tech-river boundary blends instead of cutting from the 3D canvas
+   straight into a tinted panel. */
+#about-me::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0 0;
+    z-index: 2;
+    height: 30vh;
+    pointer-events: none;
+    background: linear-gradient(180deg, transparent 0%, rgba(3, 12, 33, 0.75) 100%);
+}
+
 /* Static fallback when reduced-motion/WebGL is unavailable — no canvas, just a glow */
 #about-me.hero-fallback-active {
     background: radial-gradient(ellipse 80% 60% at 50% 30%, rgba(56, 189, 248, 0.14), transparent 70%),
