@@ -1,5 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("contact-form");
+    const feedback = document.getElementById("contact-form-feedback");
+    const submitButton = form ? form.querySelector(".form-submit") : null;
+
     if (form) {
         form.addEventListener("submit", (e) => {
             e.preventDefault();
@@ -9,6 +12,16 @@ document.addEventListener("DOMContentLoaded", () => {
             const body = encodeURIComponent(`${data.message}\n\n— ${data.name} (${data.email})`);
 
             window.location.href = `mailto:1bilal.ameen@gmail.com?subject=${subject}&body=${body}`;
+
+            if (feedback) {
+                feedback.textContent = "Opening your email client... if nothing happens, email me directly at 1bilal.ameen@gmail.com.";
+                feedback.classList.add("is-visible");
+            }
+
+            if (submitButton) {
+                submitButton.disabled = true;
+                setTimeout(() => { submitButton.disabled = false; }, 3000);
+            }
         });
     }
 

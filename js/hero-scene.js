@@ -116,6 +116,12 @@ function initScene(THREE, hero, canvas) {
         heroCube.position.x = Math.sin(performance.now() * 0.0003) * CONFIG.cubeDriftAmplitude;
         renderer.render(scene, camera);
     }
+
+    // Render one frame synchronously so there's actual content behind the
+    // canvas before fading it in — avoids a flash of an empty transparent
+    // canvas suddenly popping into a fully-formed scene.
+    renderLoop();
+    canvas.classList.add("is-ready");
     gsap.ticker.add(renderLoop);
 
     if (typeof ScrollTrigger !== "undefined") {

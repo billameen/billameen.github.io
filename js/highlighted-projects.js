@@ -2,8 +2,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const container = document.getElementById("high-projects-container");
     if (!container) return;
 
-    if (typeof lucide !== "undefined") lucide.createIcons();
-
     const cards = Array.from(container.querySelectorAll(".highlight-card"));
     if (cards.length < 2 || typeof gsap === "undefined") return;
 

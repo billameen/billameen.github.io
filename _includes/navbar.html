@@ -1,4 +1,5 @@
 <div id="top-bar">
+    <div class="nav-brand" aria-hidden="true">BA</div>
     <div id="hamburger-btn">
         <i data-lucide="menu"></i>
     </div>
@@ -47,7 +48,10 @@
         </a>
         <script src="https://unpkg.com/lucide@latest"></script>
         <script>
-            lucide.createIcons()
+            // Wait for the full document (footer, homepage-only sections, etc.)
+            // to be parsed, not just the navbar, so every data-lucide element
+            // on the page gets converted in one pass.
+            document.addEventListener("DOMContentLoaded", () => lucide.createIcons());
         </script>
     </nav>
 </div>

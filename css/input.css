@@ -456,6 +456,9 @@ h3,
 #row3 {
     overflow: hidden;
     width: 100%;
+    /* Fade logos out at the edges instead of clipping them mid-shape */
+    mask-image: linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
 }
 
 .tech-track {
@@ -463,15 +466,34 @@ h3,
     will-change: transform;
 }
 
-/* Highlighted Projects — card deck */
+#tech-river-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 0 1.5rem;
+}
+
+/* Highlighted Projects — card deck.
+   Default (no-JS) state is a plain visible stack — the absolute-positioned,
+   cycling deck only kicks in once `.js` confirms the page's scripts are
+   actually running, so a script failure degrades to "all four cards listed"
+   instead of "three of four projects invisible forever". */
 .highlight-card {
+    margin-bottom: 1.5rem;
+}
+
+.js .highlight-card {
     position: absolute;
     inset: 0;
+    margin-bottom: 0;
     opacity: 0;
 }
 
-.highlight-card:first-child {
+.js .highlight-card:first-child {
     opacity: 1;
+}
+
+.js #high-projects-container {
+    height: 500px;
 }
 
 .highlight-card-inner {
@@ -481,11 +503,14 @@ h3,
     flex-direction: column;
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
     border: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 2px solid rgba(129, 140, 248, 0.4);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border-radius: 1.25rem;
     padding: 1.75rem;
-    box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.4);
+    /* Indigo-tinted glow (matching this deck's own accent) gives it a distinct
+       identity instead of reusing the exact same neutral shadow as every card. */
+    box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.4), 0 0 40px -20px rgba(129, 140, 248, 0.35);
 }
 
 .highlight-img {
@@ -537,6 +562,28 @@ h3,
     flex-grow: 1;
 }
 
+.highlight-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: 1rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: #818cf8;
+    text-decoration: none;
+    transition: color 0.2s ease, gap 0.2s ease;
+}
+
+.highlight-link:hover {
+    color: #a5b4fc;
+    gap: 0.5rem;
+}
+
+.highlight-link svg {
+    width: 14px;
+    height: 14px;
+}
+
 /* Contact form */
 .contact-card {
     display: flex;
@@ -544,11 +591,13 @@ h3,
     gap: 1.25rem;
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
     border: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 2px solid rgba(167, 139, 250, 0.4);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border-radius: 1.25rem;
     padding: 2rem;
-    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.3);
+    /* Violet-tinted glow, matching the contact zone's own accent color */
+    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.3), 0 0 40px -20px rgba(167, 139, 250, 0.3);
 }
 
 .form-input {
@@ -590,9 +639,206 @@ h3,
     box-shadow: 0 10px 30px -8px rgba(56, 189, 248, 0.5);
 }
 
+.form-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.form-feedback {
+    font-size: 0.875rem;
+    color: #7dd3fc;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.3s ease, max-height 0.3s ease;
+}
+
+.form-feedback.is-visible {
+    opacity: 1;
+    max-height: 3rem;
+}
+
+/* Footer */
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 3rem 1.5rem 2rem;
+    text-align: center;
+    color: rgba(224, 242, 254, 0.5);
+    font-size: 0.875rem;
+}
+
+.footer-links {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.footer-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #7dd3fc;
+    transition: all 0.25s ease;
+}
+
+.footer-links a:hover {
+    color: #ffffff;
+    border-color: rgba(56, 189, 248, 0.4);
+    background: rgba(56, 189, 248, 0.1);
+    transform: translateY(-2px);
+}
+
+.footer-links svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* Profile picture — rotating gradient ring for a more bespoke frame than a
+   plain circle-crop, echoing the hero's tech-accent palette.
+   The center is genuinely masked out (not just visually covered by the photo
+   sitting on top) so it can never obscure the photo regardless of stacking
+   order — a `padding-box` mask XORed against the full box leaves only the
+   padding band (the ring itself) visible. */
+.pfp-ring {
+    position: absolute;
+    inset: -6px;
+    z-index: 0;
+    border-radius: 50%;
+    padding: 6px;
+    background: conic-gradient(from 0deg, #38bdf8, #818cf8, #38bdf8);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: spin-ring 6s linear infinite;
+}
+
+@keyframes spin-ring {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Navbar identity mark — only shown once the pill collapses to a circle on
+   desktop scroll, so the collapsed state isn't just a blank colored dot. */
+.nav-brand {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #38bdf8, #818cf8);
+    color: #020617;
+    font-weight: 800;
+    font-size: 0.8125rem;
+    letter-spacing: -0.02em;
+    flex-shrink: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
+@media (min-width: 769px) {
+    #top-bar.scrolled .nav-brand {
+        display: flex;
+    }
+
+    /* Hovering the collapsed pill re-expands it to show the full nav list —
+       the monogram needs to hand off back to that, not sit on top of it. */
+    #top-bar.scrolled:hover .nav-brand {
+        display: none;
+    }
+}
+
 /* Hero 3D background */
 #hero-canvas {
     background: var(--main-bg-color);
+    opacity: 0;
+    transition: opacity 1.2s ease;
+}
+
+#hero-canvas.is-ready {
+    opacity: 1;
+}
+
+/* Availability badge */
+.availability-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.375rem 0.875rem;
+    border-radius: 9999px;
+    background: rgba(74, 222, 128, 0.1);
+    border: 1px solid rgba(74, 222, 128, 0.3);
+    color: #4ade80;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    margin-bottom: 1.25rem;
+}
+
+.availability-badge .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #4ade80;
+    box-shadow: 0 0 8px rgba(74, 222, 128, 0.8);
+    animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+
+.hero-name {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+}
+
+.hero-tagline {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: #94a3b8;
+    font-weight: 400;
+}
+
+/* Scroll-down affordance */
+.scroll-cue {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(224, 242, 254, 0.5);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    pointer-events: none;
+}
+
+.scroll-cue svg {
+    width: 18px;
+    height: 18px;
+    animation: scroll-bounce 1.8s ease-in-out infinite;
+}
+
+@keyframes scroll-bounce {
+    0%, 100% { transform: translateY(0); opacity: 0.5; }
+    50% { transform: translateY(6px); opacity: 1; }
 }
 
 .hero-glow-1,
@@ -650,11 +896,11 @@ h3,
     position: relative;
     background: linear-gradient(
         180deg,
-        rgba(3, 12, 33, 0.75) 0%,
-        rgba(7, 17, 41, 0.8) 18%,
-        rgba(13, 15, 45, 0.75) 40%,
-        rgba(19, 15, 54, 0.8) 58%,
-        rgba(15, 12, 46, 0.8) 78%,
-        rgba(12, 10, 31, 0.85) 100%
+        rgba(6, 30, 66, 0.85) 0%,
+        rgba(11, 61, 107, 0.75) 18%,
+        rgba(35, 32, 92, 0.75) 40%,
+        rgba(59, 47, 138, 0.75) 58%,
+        rgba(56, 28, 110, 0.78) 78%,
+        rgba(38, 15, 74, 0.85) 100%
     );
 }

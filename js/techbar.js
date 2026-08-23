@@ -166,23 +166,31 @@ document.addEventListener("DOMContentLoaded", () => {
     const targetSpeed = { row1: 1, row2: 1, row3: 1 };
     const currentSpeed = { row1: 1, row2: 1, row3: 1 };
 
-    section.addEventListener("mousemove", (e) => {
+    function applyBias(clientX) {
         const rect = section.getBoundingClientRect();
-        const relX = (e.clientX - rect.left) / rect.width;
+        const relX = (clientX - rect.left) / rect.width;
         const bias = Math.max(-1, Math.min(1, (relX - 0.5) * 2));
 
-        // Rows biased toward the cursor's side speed up; the mirrored row eases
+        // Rows biased toward the pointer's side speed up; the mirrored row eases
         // the other way, selling a "current" pulling toward the pointer.
         targetSpeed.row1 = 1 + bias * 0.6;
         targetSpeed.row2 = 1 - bias * 0.6;
         targetSpeed.row3 = 1 + bias * 0.6;
-    });
+    }
 
-    section.addEventListener("mouseleave", () => {
+    function resetSpeed() {
         targetSpeed.row1 = 1;
         targetSpeed.row2 = 1;
         targetSpeed.row3 = 1;
-    });
+    }
+
+    section.addEventListener("mousemove", (e) => applyBias(e.clientX));
+    section.addEventListener("mouseleave", resetSpeed);
+
+    // Touch devices get the same effect while a finger is resting on the
+    // section — passive so it never blocks the page's own scroll.
+    section.addEventListener("touchmove", (e) => applyBias(e.touches[0].clientX), { passive: true });
+    section.addEventListener("touchend", resetSpeed);
 
     gsap.ticker.add((time, deltaTime) => {
         // Clamp so a slow/blocked frame (tab backgrounded for a moment, a GC pause,

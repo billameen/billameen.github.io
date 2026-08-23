@@ -5,7 +5,7 @@
     <p class="text-slate-400">A few projects I'm especially proud of</p>
 </div>
 
-<div id="high-projects-container" class="relative w-full max-w-xl mx-auto h-[460px] px-6">
+<div id="high-projects-container" class="relative w-full max-w-2xl mx-auto px-6">
     {% for project in featured %}
     <div class="highlight-card" style="z-index: {{ forloop.rindex }};" data-index="{{ forloop.index0 }}">
         <div class="highlight-card-inner">
@@ -25,6 +25,11 @@
                 <li>{{ tech }}</li>
                 {% endfor %}
             </ul>
+            {% if project.repo != "" %}
+            <a href="{{ project.repo }}" target="_blank" rel="noopener noreferrer" class="highlight-link">
+                View Repo <i data-lucide="arrow-up-right"></i>
+            </a>
+            {% endif %}
         </div>
     </div>
     {% endfor %}

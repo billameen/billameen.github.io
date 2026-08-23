@@ -1,8 +1,9 @@
 lang: en
-title: My Portfolio Website
+title: Bilal Ameen
 description: >-
-  A website for fun.
-url: "billameen.github.io"
+  Portfolio of Bilal Ameen — Computer Science student specializing in AI,
+  software engineering, and full-stack development.
+url: "https://billameen.github.io"
 baseurl: ""
 
 exclude:
